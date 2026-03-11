@@ -9,6 +9,7 @@ import type { Metadata } from "next";
 import LandingNav from "./components/nav/LandingNav";
 import OceanLanding from "./components/landing/OceanLanding";
 import OceanFooter from "./components/landing/OceanFooter";
+import { publicLinks } from "@/lib/site-links";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -36,8 +37,8 @@ export default function Home() {
         variant="ocean"
         brandName="Echo"
         brandAlt="Echo logo"
-        primaryLabel="Book Demo"
-        primaryHref="mailto:hello@echobills.space?subject=Echo%20Demo"
+        primaryLabel="Start Free"
+        primaryHref={publicLinks.getStarted}
       />
       <div className="relative min-h-screen overflow-hidden bg-[#a9e9f4] page-transition">
         <OceanLanding />

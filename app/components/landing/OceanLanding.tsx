@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { publicLinks } from "@/lib/site-links";
 
 const HERO_CLOUDS = [
   { src: "/clouds/cloud1.svg", className: "left-[2%] top-28 w-28 sm:w-40 ocean-float" },
@@ -157,7 +158,7 @@ const SECURITY_CARDS = [
   },
   {
     title: "Sensitive knowledge handled carefully",
-    body: "Docs, policies, product notes, and connected echontext are treated like operational data, not marketing exhaust.",
+    body: "Docs, policies, product notes, and connected context are treated like operational data, not marketing exhaust.",
     stat: "Protected by default",
     bg: "bg-[#d4f8e8]",
   },
@@ -191,16 +192,25 @@ export default function OceanLanding() {
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
-              href="mailto:hello@echobills.space?subject=Echo%20Demo"
+              href={publicLinks.getStarted}
               className="inline-flex items-center justify-center rounded-xl border-2 border-[var(--charcoal)] bg-[var(--mint)] px-7 py-3.5 font-heading text-lg font-bold text-[var(--charcoal)] shadow-[0_6px_0_#1a1a1a] transition hover:-translate-y-1 hover:shadow-[0_10px_0_#1a1a1a]"
             >
-              Book Demo
+              Start Free
             </Link>
             <Link
-              href="/pricing"
+              href={publicLinks.pricing}
               className="inline-flex items-center justify-center rounded-xl border-2 border-[var(--charcoal)] bg-white px-7 py-3.5 font-heading text-lg font-bold text-[var(--charcoal)] shadow-[0_6px_0_#1a1a1a] transition hover:-translate-y-1 hover:shadow-[0_10px_0_#1a1a1a]"
             >
               View Pricing
+            </Link>
+          </div>
+          <div className="mt-4 flex items-center justify-center gap-3 text-sm font-semibold text-[var(--charcoal)]/65">
+            <Link href={publicLinks.login} className="underline decoration-2 underline-offset-4">
+              Log in
+            </Link>
+            <span className="h-1 w-1 rounded-full bg-[var(--charcoal)]/35" />
+            <Link href={publicLinks.billing} className="underline decoration-2 underline-offset-4">
+              Open billing
             </Link>
           </div>
           <div className="relative mt-16 overflow-hidden rounded-[2rem] border-2 border-[var(--charcoal)] bg-[#d4e9ff] p-4 shadow-[0_14px_0_#1a1a1a] sm:p-6">

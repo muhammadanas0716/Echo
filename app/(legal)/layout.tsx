@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import LandingNav from "../components/nav/LandingNav";
 import OceanFooter from "../components/landing/OceanFooter";
+import { publicLinks } from "@/lib/site-links";
 
 export default function LegalLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,8 +11,8 @@ export default function LegalLayout({ children }: { children: React.ReactNode })
         variant="ocean"
         brandName="Echo"
         brandAlt="Echo logo"
-        primaryLabel="Book Demo"
-        primaryHref="mailto:hello@echobills.space?subject=Echo%20Demo"
+        primaryLabel="Start Free"
+        primaryHref={publicLinks.getStarted}
       />
       <div className="relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,#90ddf0_0%,#b8edfb_54%,#d4f8ff_100%)]">
         <div className="pointer-events-none absolute inset-0 dotted-sea opacity-50" />

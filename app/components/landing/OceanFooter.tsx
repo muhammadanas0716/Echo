@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FiArrowRight, FiMail, FiZap, FiShield, FiBarChart2 } from "react-icons/fi";
+import { publicLinks } from "@/lib/site-links";
 
 const HIGHLIGHTS = [
   { icon: FiZap, text: "Website chatbots", color: "bg-[var(--sun)]" },
@@ -55,13 +56,13 @@ export default function OceanFooter() {
             </div>
             <div className="flex flex-col gap-3">
               <Link
-                href="mailto:hello@echobills.space?subject=Echo%20Demo"
+                href={publicLinks.getStarted}
                 className="inline-flex items-center justify-center gap-2 rounded-xl border-3 border-[var(--charcoal)] bg-[#a6ea47] px-6 py-4 font-heading text-lg font-extrabold text-[var(--charcoal)] shadow-[0_5px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_7px_0_#1a1a1a]"
               >
-                Book demo <FiArrowRight className="h-5 w-5" />
+                Start free <FiArrowRight className="h-5 w-5" />
               </Link>
               <Link
-                href="/pricing"
+                href={publicLinks.pricing}
                 className="inline-flex items-center justify-center rounded-xl border-3 border-[var(--charcoal)] bg-white px-6 py-4 font-bold text-[var(--charcoal)] shadow-[0_5px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_7px_0_#1a1a1a]"
               >
                 See pricing
@@ -91,7 +92,7 @@ export default function OceanFooter() {
               <span className="font-heading text-3xl font-extrabold text-[var(--charcoal)]">Echo</span>
             </div>
             <p className="mt-4 max-w-xs text-sm font-semibold leading-relaxed text-[var(--charcoal)]/60">
-              Custom AI support agents for websites, Shopify stores, product docs, and echommunities.
+              Custom AI support agents for websites, Shopify stores, product docs, and communities.
             </p>
             <div className="mt-4 flex gap-2">
               <a
@@ -118,9 +119,10 @@ export default function OceanFooter() {
               <h4 className="mb-3 text-[10px] font-black uppercase tracking-widest text-[var(--charcoal)]/40">Product</h4>
               <div className="flex flex-wrap gap-2">
                 {[
-                  { label: "Pricing", href: "/pricing" },
-                  { label: "Book demo", href: "mailto:hello@echobills.space?subject=Echo%20Demo" },
-                  { label: "About", href: "/about" },
+                  { label: "Pricing", href: publicLinks.pricing },
+                  { label: "Note on the demo", href: publicLinks.demoNote },
+                  { label: "Start free", href: publicLinks.getStarted },
+                  { label: "Log in", href: publicLinks.login },
                 ].map((link) => (
                   <Link
                     key={link.label}

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { publicLinks } from "@/lib/site-links";
 
 type LandingNavProps = {
   variant?: "default" | "ocean";
@@ -16,8 +17,8 @@ export default function LandingNav({
   variant = "ocean",
   brandName = "Echo",
   brandAlt = "Echo logo",
-  primaryLabel = "Book Demo",
-  primaryHref = "mailto:hello@echobills.space?subject=Echo%20Demo",
+  primaryLabel = "Start Free",
+  primaryHref = publicLinks.getStarted,
 }: LandingNavProps) {
   const [scrolled, setScrolled] = useState(false);
   const isOcean = variant === "ocean";
@@ -109,12 +110,28 @@ export default function LandingNav({
               Pricing
             </Link>
             <Link
+              href={publicLinks.demoNote}
+              className={`hidden font-bold text-[var(--charcoal)] transition-opacity xl:block ${
+                isOcean ? "text-xs hover:opacity-70" : "px-4 py-2 text-xs hover:opacity-80"
+              }`}
+            >
+              Note on the demo
+            </Link>
+            <Link
               href="/about"
               className={`hidden font-bold text-[var(--charcoal)] transition-opacity md:block ${
                 isOcean ? "text-sm hover:opacity-70" : "px-4 py-2 text-sm hover:opacity-80"
               }`}
             >
               About
+            </Link>
+            <Link
+              href={publicLinks.login}
+              className={`hidden font-bold text-[var(--charcoal)] transition-opacity 2xl:block ${
+                isOcean ? "text-sm hover:opacity-70" : "px-4 py-2 text-sm hover:opacity-80"
+              }`}
+            >
+              Log In
             </Link>
             <Link
               href={primaryHref}

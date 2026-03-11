@@ -169,7 +169,7 @@ export default function AboutPage() {
               Still early. Still serious.
             </h2>
             <p className="mt-3 text-sm font-semibold leading-relaxed text-[var(--charcoal)]/72">
-              The honest version is simple: this product is still early, still evolving, and still opinionated. But that is also the point. It is being shaped around real echonstraints instead of being polished into something vague enough to impress everyone for ten seconds.
+              The honest version is simple: this product is still early, still evolving, and still opinionated. But that is also the point. It is being shaped around real constraints instead of being polished into something vague enough to impress everyone for ten seconds.
             </p>
             <p className="mt-3 text-sm font-semibold leading-relaxed text-[var(--charcoal)]/72">
               If that approach matches how you think about support, it will probably make sense. If you need a giant all-things-to-all-teams platform right this second, it may not. Better to be clear about that than to fake certainty.
@@ -190,11 +190,11 @@ export default function AboutPage() {
                 See pricing <FiArrowRight className="h-4 w-4" />
               </Link>
               <a
-                href="mailto:hello@echobills.space?subject=Echo%20Demo"
+                href="/signup?next=%2Fbilling"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border-3 border-[var(--charcoal)] bg-white px-5 py-3 font-heading text-sm font-bold text-[var(--charcoal)] shadow-[0_5px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_7px_0_#1a1a1a]"
               >
                 <FiMail className="h-4 w-4" />
-                Book demo
+                Start free
               </a>
             </div>
           </div>

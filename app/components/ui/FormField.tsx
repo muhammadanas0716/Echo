@@ -24,18 +24,18 @@ export default function FormField({
   hint,
 }: FormFieldProps) {
   return (
-    <div>
-      <label className="block text-sm font-semibold text-[var(--charcoal)] mb-2">
-        {label} {required && "*"}
+    <div className="space-y-2.5">
+      <label className="block text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)]/55">
+        {label}
+        {required ? <span className="ml-1 text-[var(--coral)]">*</span> : null}
       </label>
-      {children}
+      <div className="space-y-2">{children}</div>
       {hint && (
-        <p className="text-xs text-[var(--charcoal)] opacity-60 mt-1">{hint}</p>
+        <p className="text-xs font-semibold leading-relaxed text-[var(--charcoal)]/55">{hint}</p>
       )}
       {error && (
-        <p className="text-sm text-[var(--coral)] mt-1">{error}</p>
+        <p className="text-sm font-semibold text-[var(--coral)]">{error}</p>
       )}
     </div>
   );
 }
-

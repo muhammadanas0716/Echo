@@ -25,7 +25,7 @@ const sections = [
       "We collect the information needed to run the website, respond to inquiries, and deliver the service we describe.",
     items: [
       "Contact details you send us, such as your name, email address, company name, and the information included in your message.",
-      "Project and echontext you choose to share with us during demos, onboarding discussions, or implementation planning.",
+      "Project and context you choose to share with us during demos, onboarding discussions, or implementation planning.",
       "Site usage data such as page visits, device data, referrers, and basic diagnostics.",
       "Operational records such as support emails, scheduling details, and internal notes needed to follow up on legitimate business conversations.",
       "Billing-related metadata from payment providers, without storing your full card details ourselves.",
