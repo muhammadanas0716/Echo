@@ -1,0 +1,35 @@
+NEXT_PUBLIC_CREEM_ECHO_STARTER_MONTHLY_PRODUCT_ID
+Product Name: Echo Starter Monthly
+Description: A clean baseline for shipping your first real SaaS billing flow with Echo. Includes email/password and Google OAuth, hosted checkout and customer portal, webhook-synced subscriptions, and 100 credits every month.
+
+NEXT_PUBLIC_CREEM_ECHO_STARTER_YEARLY_PRODUCT_ID
+Product Name: Echo Starter Yearly
+Description: A clean baseline for shipping your first real SaaS billing flow with Echo on annual billing. Includes email/password and Google OAuth, hosted checkout and customer portal, webhook-synced subscriptions, and 1200 credits per year.
+
+NEXT_PUBLIC_CREEM_ECHO_PRO_MONTHLY_PRODUCT_ID
+Product Name: Echo Pro Monthly
+Description: The default paid plan for most Echo SaaS teams and AI products. Includes everything in Starter plus upgrade and downgrade flows, customer billing portal access, webhook-synced subscriptions, and 350 credits every month.
+
+NEXT_PUBLIC_CREEM_ECHO_PRO_YEARLY_PRODUCT_ID
+Product Name: Echo Pro Yearly
+Description: The default paid plan for most Echo SaaS teams and AI products on annual billing. Includes everything in Starter plus upgrade and downgrade flows, customer billing portal access, webhook-synced subscriptions, and 4200 credits per year.
+
+NEXT_PUBLIC_CREEM_ECHO_SCALE_MONTHLY_PRODUCT_ID
+Product Name: Echo Scale Monthly
+Description: For Echo products that want credits, top-ups, and a fuller billing back office. Includes everything in Pro plus admin billing visibility, higher usage allowance, and 900 credits every month.
+
+NEXT_PUBLIC_CREEM_ECHO_SCALE_YEARLY_PRODUCT_ID
+Product Name: Echo Scale Yearly
+Description: For Echo products that want credits, top-ups, and a fuller billing back office on annual billing. Includes everything in Pro plus admin billing visibility, higher usage allowance, and 10800 credits per year.
+
+NEXT_PUBLIC_CREEM_ECHO_SMALL_TOPUP_PRODUCT_ID
+Product Name: Echo Small Top-up
+Description: One-time credit pack for quick extra Echo usage during launches, demos, and short bursts of activity. Adds 100 credits.
+
+NEXT_PUBLIC_CREEM_ECHO_GROWTH_TOPUP_PRODUCT_ID
+Product Name: Echo Growth Top-up
+Description: One-time credit pack for Echo teams with bursty usage that need a practical mid-sized refill. Adds 500 credits.
+
+NEXT_PUBLIC_CREEM_ECHO_SCALE_TOPUP_PRODUCT_ID
+Product Name: Echo Scale Top-up
+Description: One-time credit pack for heavier Echo AI and automation workloads that need a larger refill. Adds 2000 credits.

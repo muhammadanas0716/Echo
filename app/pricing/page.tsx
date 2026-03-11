@@ -10,11 +10,11 @@ function PricingStructuredData() {
     "@graph": [
       {
         "@type": "Product",
-        "@id": "https://echobills.space/pricing#product",
-        name: "Support Co Launch Pricing",
+        "@id": "https://echo-ecru-nine.vercel.app/pricing#product",
+        name: "Echo Launch Pricing",
         description:
           "Early launch pricing for AI support agents across websites, Shopify stores, docs, and community channels.",
-        brand: { "@type": "Brand", name: "Support Co" },
+        brand: { "@type": "Brand", name: "Echo" },
         category: "Software",
         offers: {
           "@type": "Offer",
@@ -22,13 +22,13 @@ function PricingStructuredData() {
           priceCurrency: "USD",
           priceValidUntil: "2027-12-31",
           availability: "https://schema.org/InStock",
-          url: "https://echobills.space/pricing",
-          seller: { "@type": "Organization", name: "Support Co" },
+          url: "https://echo-ecru-nine.vercel.app/pricing",
+          seller: { "@type": "Organization", name: "Echo" },
         },
       },
       {
         "@type": "FAQPage",
-        "@id": "https://echobills.space/pricing#faq",
+        "@id": "https://echo-ecru-nine.vercel.app/pricing#faq",
         mainEntity: [
           {
             "@type": "Question",
@@ -60,7 +60,7 @@ function PricingStructuredData() {
 }
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Support Co Pricing - early launch plans for AI support teams",
+  title: "Echo Pricing - early launch plans for AI support teams",
   description:
     "Early launch pricing for teams building AI support agents for websites, Shopify stores, docs, and community channels.",
   path: "/pricing",
@@ -71,7 +71,7 @@ export const metadata: Metadata = buildPageMetadata({
     "shopify support bot pricing",
     "discord support bot pricing",
     "customer support automation pricing",
-    "support co pricing",
+    "echo pricing",
   ],
 });
 
@@ -180,10 +180,10 @@ export default function PricingPage() {
       <PricingStructuredData />
       <LandingNav
         variant="ocean"
-        brandName="Support Co"
-        brandAlt="Support Co logo"
+        brandName="Echo"
+        brandAlt="Echo logo"
         primaryLabel="Book Demo"
-        primaryHref="mailto:hello@echobills.space?subject=Support%20Co%20Demo"
+        primaryHref="mailto:hello@echobills.space?subject=Echo%20Demo"
       />
       <div className="relative min-h-screen overflow-hidden bg-[#a9e9f4] page-transition">
         <section className="relative bg-[linear-gradient(180deg,#90ddf0_0%,#b8edfb_54%,#d4f8ff_100%)] px-4 pb-16 pt-36 sm:px-6 sm:pt-40 lg:px-8">
@@ -299,7 +299,7 @@ export default function PricingPage() {
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a
-                href="mailto:hello@echobills.space?subject=Support%20Co%20Pricing"
+                href="mailto:hello@echobills.space?subject=Echo%20Pricing"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-[var(--charcoal)] bg-[#a6ea47] px-8 py-3.5 font-heading text-lg font-bold text-[var(--charcoal)] shadow-[0_5px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_8px_0_#1a1a1a]"
               >
                 Talk Through Pricing

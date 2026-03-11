@@ -1,7 +1,7 @@
 /**
  * Home Page Component
  *
- * Main landing page for Support Co.
+ * Main landing page for Echo.
  * Composes the ocean landing experience and footer.
  */
 
@@ -12,7 +12,7 @@ import OceanFooter from "./components/landing/OceanFooter";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Support Co - AI support agents for your website, store, and community",
+  title: "Echo - AI support agents for your website, store, and community",
   description:
     "Deploy AI support agents trained on your docs, tickets, and codebase for websites, Shopify stores, and Discord communities. Slack support bots are coming soon.",
   path: "/",
@@ -34,10 +34,10 @@ export default function Home() {
     <>
       <LandingNav
         variant="ocean"
-        brandName="Support Co"
-        brandAlt="Support Co logo"
+        brandName="Echo"
+        brandAlt="Echo logo"
         primaryLabel="Book Demo"
-        primaryHref="mailto:hello@echobills.space?subject=Support%20Co%20Demo"
+        primaryHref="mailto:hello@echobills.space?subject=Echo%20Demo"
       />
       <div className="relative min-h-screen overflow-hidden bg-[#a9e9f4] page-transition">
         <OceanLanding />

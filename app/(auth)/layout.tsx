@@ -14,9 +14,9 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
             className="inline-flex items-center gap-3 rounded-full border-2 border-[var(--charcoal)] bg-white px-5 py-2.5 shadow-[0_4px_0_#1a1a1a]"
           >
             <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl border-2 border-[var(--charcoal)] bg-[var(--mint)]">
-              <Image src="/logo.png" alt="Support Co" width={36} height={36} className="h-full w-full object-cover" />
+              <Image src="/logo.png" alt="Echo" width={36} height={36} className="h-full w-full object-cover" />
             </div>
-            <span className="font-heading text-lg font-extrabold text-[var(--charcoal)]">Support Co</span>
+            <span className="font-heading text-lg font-extrabold text-[var(--charcoal)]">Echo</span>
           </Link>
           <div className="rounded-full border-2 border-[var(--charcoal)] bg-[#a6ea47] px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a]">
             Supabase + Creem

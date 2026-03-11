@@ -1,8 +1,8 @@
 export const starterConfig = {
   brand: {
-    name: "Support Co",
-    shortName: "Support Co",
-    domainLabel: "supportco.ai",
+    name: "Echo",
+    shortName: "Echo",
+    domainLabel: "echo-ecru-nine.vercel.app",
     email: "hello@echobills.space",
   },
   marketing: {

@@ -50,12 +50,12 @@ export default function OceanFooter() {
                 Give your support team an AI layer that understands the work.
               </h2>
               <p className="mt-3 max-w-lg text-base font-semibold text-[var(--charcoal)]/60">
-                From ecommerce questions to product troubleshooting, Support Co helps customers self-serve while keeping humans focused on the hard cases.
+                From ecommerce questions to product troubleshooting, Echo helps customers self-serve while keeping humans focused on the hard cases.
               </p>
             </div>
             <div className="flex flex-col gap-3">
               <Link
-                href="mailto:hello@echobills.space?subject=Support%20Co%20Demo"
+                href="mailto:hello@echobills.space?subject=Echo%20Demo"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border-3 border-[var(--charcoal)] bg-[#a6ea47] px-6 py-4 font-heading text-lg font-extrabold text-[var(--charcoal)] shadow-[0_5px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_7px_0_#1a1a1a]"
               >
                 Book demo <FiArrowRight className="h-5 w-5" />
@@ -86,12 +86,12 @@ export default function OceanFooter() {
           <div className="shrink-0">
             <div className="flex items-center gap-3">
               <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border-3 border-[var(--charcoal)] bg-[var(--mint)] shadow-[0_4px_0_#1a1a1a]">
-                <Image src="/logo.png" alt="Support Co" width={56} height={56} className="h-full w-full object-cover" />
+                <Image src="/logo.png" alt="Echo" width={56} height={56} className="h-full w-full object-cover" />
               </div>
-              <span className="font-heading text-3xl font-extrabold text-[var(--charcoal)]">Support Co</span>
+              <span className="font-heading text-3xl font-extrabold text-[var(--charcoal)]">Echo</span>
             </div>
             <p className="mt-4 max-w-xs text-sm font-semibold leading-relaxed text-[var(--charcoal)]/60">
-              Custom AI support agents for websites, Shopify stores, product docs, and support communities.
+              Custom AI support agents for websites, Shopify stores, product docs, and echommunities.
             </p>
             <div className="mt-4 flex gap-2">
               <a
@@ -119,7 +119,7 @@ export default function OceanFooter() {
               <div className="flex flex-wrap gap-2">
                 {[
                   { label: "Pricing", href: "/pricing" },
-                  { label: "Book demo", href: "mailto:hello@echobills.space?subject=Support%20Co%20Demo" },
+                  { label: "Book demo", href: "mailto:hello@echobills.space?subject=Echo%20Demo" },
                   { label: "About", href: "/about" },
                 ].map((link) => (
                   <Link
@@ -187,7 +187,7 @@ export default function OceanFooter() {
         <div className="mt-12 rounded-[1.5rem] border-3 border-[var(--charcoal)] bg-white/70 px-6 py-5 shadow-[0_3px_0_#1a1a1a]">
           <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
             <div className="flex items-center gap-3">
-              <span className="text-sm font-semibold text-[var(--charcoal)]/50">© {new Date().getFullYear()} Support Co</span>
+              <span className="text-sm font-semibold text-[var(--charcoal)]/50">© {new Date().getFullYear()} Echo</span>
               <span className="hidden h-1 w-1 rounded-full bg-[var(--charcoal)]/30 sm:block" />
               <span className="hidden text-sm font-semibold text-[var(--charcoal)]/50 sm:block">
                 Built for teams turning support into a product advantage.

@@ -34,10 +34,10 @@ export default function AppShell({
         <aside className="border-b-3 border-[var(--charcoal)] bg-white px-5 py-6 lg:border-b-0 lg:border-r-3 lg:px-6">
           <Link href="/" className="flex items-center gap-3">
             <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border-3 border-[var(--charcoal)] bg-[var(--mint)] shadow-[0_4px_0_#1a1a1a]">
-              <Image src="/logo.png" alt="Support Co" width={48} height={48} className="h-full w-full object-cover" />
+              <Image src="/logo.png" alt="Echo" width={48} height={48} className="h-full w-full object-cover" />
             </div>
             <div>
-              <p className="font-heading text-xl font-extrabold text-[var(--charcoal)]">Support Co</p>
+              <p className="font-heading text-xl font-extrabold text-[var(--charcoal)]">Echo</p>
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--charcoal)]/45">
                 Starter Console
               </p>

@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { renderSocialImage } from "@/lib/seo/social-image";
 
-export const alt = "Support Co Pricing";
+export const alt = "Echo Pricing";
 export const size = {
   width: 1200,
   height: 630,

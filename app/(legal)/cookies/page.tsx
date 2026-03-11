@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { FiInfo, FiToggleRight, FiMail, FiLock, FiBarChart2, FiSliders } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy - Support Co",
+  title: "Cookie Policy - Echo",
   description:
-    "Detailed cookie and browser storage information for Support Co, including analytics, preferences, and third-party behavior.",
+    "Detailed cookie and browser storage information for Echo, including analytics, preferences, and third-party behavior.",
 };
 
 const cookies = [
@@ -78,7 +78,7 @@ export default function CookiesPage() {
           Browser storage, explained plainly.
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-base font-semibold leading-relaxed text-[var(--charcoal)]/60">
-          This page covers cookies and similar browser storage used by Support Co. The short version: we use what is needed to run the site, and we try to avoid the manipulative tracking patterns people have learned to hate.
+          This page covers cookies and similar browser storage used by Echo. The short version: we use what is needed to run the site, and we try to avoid the manipulative tracking patterns people have learned to hate.
         </p>
       </div>
 

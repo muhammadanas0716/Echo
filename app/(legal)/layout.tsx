@@ -8,10 +8,10 @@ export default function LegalLayout({ children }: { children: React.ReactNode })
     <>
       <LandingNav
         variant="ocean"
-        brandName="Support Co"
-        brandAlt="Support Co logo"
+        brandName="Echo"
+        brandAlt="Echo logo"
         primaryLabel="Book Demo"
-        primaryHref="mailto:hello@echobills.space?subject=Support%20Co%20Demo"
+        primaryHref="mailto:hello@echobills.space?subject=Echo%20Demo"
       />
       <div className="relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,#90ddf0_0%,#b8edfb_54%,#d4f8ff_100%)]">
         <div className="pointer-events-none absolute inset-0 dotted-sea opacity-50" />
@@ -26,9 +26,9 @@ export default function LegalLayout({ children }: { children: React.ReactNode })
               className="group inline-flex items-center gap-3 rounded-full border-2 border-[var(--charcoal)] bg-white px-5 py-2.5 shadow-[0_4px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_6px_0_#1a1a1a]"
             >
               <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg border-2 border-[var(--charcoal)] bg-[var(--mint)]">
-                <Image src="/logo.png" alt="Support Co" width={32} height={32} className="h-full w-full object-cover" />
+                <Image src="/logo.png" alt="Echo" width={32} height={32} className="h-full w-full object-cover" />
               </div>
-              <span className="font-heading text-lg font-extrabold text-[var(--charcoal)]">Support Co</span>
+              <span className="font-heading text-lg font-extrabold text-[var(--charcoal)]">Echo</span>
             </Link>
           </div>
 

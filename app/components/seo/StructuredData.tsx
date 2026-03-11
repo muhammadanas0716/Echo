@@ -12,7 +12,7 @@ interface StructuredDataProps {
 
 export default function StructuredData({
   url,
-  title = "Echobills - Manage all RECURRING things: one for all.",
+  title = "Echo - Manage all RECURRING things: one for all.",
   description = "Track renewals, get reminders, view analytics, and use AI to optimize your subscription spending. Discord Bot, Chrome Extension. Also manage your credit card bills; when I said you can manage all recurring things: I meant it.",
   image,
   hasFAQ = true,
@@ -27,7 +27,7 @@ export default function StructuredData({
     {
       "@type": "Organization",
       "@id": `${baseUrl}/#org`,
-      name: "Echobills",
+      name: "Echo",
       url: baseUrl,
       description:
         "Track renewals, get reminders, view analytics, and use AI to optimize your subscription spending. Discord Bot, Chrome Extension. Also manage your credit card bills; when I said you can manage all recurring things: I meant it.",
@@ -53,7 +53,7 @@ export default function StructuredData({
       "@type": "WebSite",
       "@id": `${baseUrl}/#website`,
       url: baseUrl,
-      name: "Echobills",
+      name: "Echo",
       description: "Manage all RECURRING things: one for all.",
       publisher: { "@id": `${baseUrl}/#org` },  
       potentialAction: {
@@ -76,7 +76,7 @@ export default function StructuredData({
     {
       "@type": "Product",
       "@id": `${baseUrl}/#product`,
-      name: "Echobills Pro",
+      name: "Echo Pro",
       description:
         "Track renewals, get reminders, view analytics, and use AI to optimize your subscription spending. Discord Bot, Chrome Extension. Also manage your credit card bills; when I said you can manage all recurring things: I meant it.",
       brand: { "@id": `${baseUrl}/#org` },
@@ -94,7 +94,7 @@ export default function StructuredData({
     {
       "@type": "SoftwareApplication",
       "@id": `${baseUrl}/#app`,
-      name: "Echobills",
+      name: "Echo",
       operatingSystem: "Web, iOS, Android",
       applicationCategory: "FinanceApplication",
       description:

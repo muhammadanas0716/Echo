@@ -11,9 +11,9 @@ import {
 } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "About Support Co - Why this exists",
+  title: "About Echo - Why this exists",
   description:
-    "A more honest look at why Support Co exists, what it is trying to solve, and how it is being built.",
+    "A more honest look at why Echo exists, what it is trying to solve, and how it is being built.",
 };
 
 const principles = [
@@ -68,7 +68,7 @@ export default function AboutPage() {
           of why this exists.
         </h1>
         <p className="mx-auto mt-5 max-w-2xl text-base font-semibold leading-relaxed text-[var(--charcoal)]/60">
-          Support Co exists because most AI support products still feel too detached from the actual work of support. They look impressive in demos, but the moment a customer asks something messy, cross-functional, or specific to the real product, the illusion breaks.
+          Echo exists because most AI support products still feel too detached from the actual work of support. They look impressive in demos, but the moment a customer asks something messy, cross-functional, or specific to the real product, the illusion breaks.
         </p>
       </div>
 
@@ -89,7 +89,7 @@ export default function AboutPage() {
                 A lot of AI support tools flatten that reality into one general-purpose bot. That sounds efficient, but it often creates a different problem: everything starts bleeding into everything else. Billing logic interferes with product answers. Refund policy language leaks into onboarding replies. Internal notes get mixed with public-facing guidance.
               </p>
               <p>
-                Support Co is built around the idea that support systems need structure, routing, and scoped knowledge. One front door. Multiple specialist agents. Clear boundaries between what each agent should know and what it should not.
+                Echo is built around the idea that support systems need structure, routing, and scoped knowledge. One front door. Multiple specialist agents. Clear boundaries between what each agent should know and what it should not.
               </p>
             </div>
           </div>
@@ -120,7 +120,7 @@ export default function AboutPage() {
 
       <div className="mt-10 rounded-[2rem] border-3 border-[var(--charcoal)] bg-[#99e8cf] p-6 shadow-[0_7px_0_#1a1a1a] sm:p-10">
         <h2 className="font-heading text-2xl font-extrabold text-[var(--charcoal)] sm:text-3xl">
-          What Support Co is trying to be
+          What Echo is trying to be
         </h2>
         <div className="mt-5 grid gap-4 md:grid-cols-2">
           {[
@@ -169,7 +169,7 @@ export default function AboutPage() {
               Still early. Still serious.
             </h2>
             <p className="mt-3 text-sm font-semibold leading-relaxed text-[var(--charcoal)]/72">
-              The honest version is simple: this product is still early, still evolving, and still opinionated. But that is also the point. It is being shaped around real support constraints instead of being polished into something vague enough to impress everyone for ten seconds.
+              The honest version is simple: this product is still early, still evolving, and still opinionated. But that is also the point. It is being shaped around real echonstraints instead of being polished into something vague enough to impress everyone for ten seconds.
             </p>
             <p className="mt-3 text-sm font-semibold leading-relaxed text-[var(--charcoal)]/72">
               If that approach matches how you think about support, it will probably make sense. If you need a giant all-things-to-all-teams platform right this second, it may not. Better to be clear about that than to fake certainty.
@@ -190,7 +190,7 @@ export default function AboutPage() {
                 See pricing <FiArrowRight className="h-4 w-4" />
               </Link>
               <a
-                href="mailto:hello@echobills.space?subject=Support%20Co%20Demo"
+                href="mailto:hello@echobills.space?subject=Echo%20Demo"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border-3 border-[var(--charcoal)] bg-white px-5 py-3 font-heading text-sm font-bold text-[var(--charcoal)] shadow-[0_5px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_7px_0_#1a1a1a]"
               >
                 <FiMail className="h-4 w-4" />

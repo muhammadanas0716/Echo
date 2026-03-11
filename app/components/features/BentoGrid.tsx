@@ -174,7 +174,7 @@ export default function BentoGrid() {
           Feature Studio
         </span>
         <h2 className="text-3xl sm:text-5xl font-bold font-heading text-[var(--charcoal)] mb-3">
-          A guided tour of everything Echobills does
+          A guided tour of everything Echo does
         </h2>
         <p className="text-lg sm:text-xl text-[var(--charcoal)] opacity-70 max-w-3xl mx-auto">
           Pick a chapter, skim the screens, and dive into every detail without leaving the page.

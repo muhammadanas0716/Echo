@@ -59,7 +59,7 @@ export default function Error({
                 Go home
               </Link>
               <a
-                href="mailto:hello@echobills.space?subject=Support%20Co%20Error%20Report"
+                href="mailto:hello@echobills.space?subject=Echo%20Error%20Report"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border-3 border-[var(--charcoal)] bg-[#fef3c7] px-5 py-3 font-heading text-sm font-bold text-[var(--charcoal)] shadow-[0_5px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_7px_0_#1a1a1a]"
               >
                 <FiMail className="h-4 w-4" />

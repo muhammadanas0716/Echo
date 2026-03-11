@@ -1,6 +1,8 @@
-# Support Co
+# Echo
 
-Production-ready Next.js App Router starter with Supabase auth, Creem billing, webhook-driven subscription sync, protected routes, and a credits wallet. The existing `Support Co` landing/pricing/legal pages remain intact; the new infrastructure lives behind them in the authenticated app.
+Production-ready Next.js App Router starter with Supabase auth, Creem billing, webhook-driven subscription sync, protected routes, and a credits wallet. The existing `Echo` landing/pricing/legal pages remain intact; the new infrastructure lives behind them in the authenticated app.
+
+Live URL: [https://echo-ecru-nine.vercel.app/](https://echo-ecru-nine.vercel.app/)
 
 ## Included
 
@@ -88,20 +90,21 @@ Copy `.env.example` to `.env.local` and fill in:
 3. Enable Google OAuth in Supabase Auth.
 4. Set auth redirect URLs:
    - `http://localhost:4000/auth/callback`
-   - `https://your-domain.com/auth/callback`
+   - `https://echo-ecru-nine.vercel.app/auth/callback`
 5. Run the SQL migration in [`supabase/migrations/20260311_000001_starter_core.sql`](./supabase/migrations/20260311_000001_starter_core.sql).
 6. Copy the project URL, anon key, and service role key into `.env.local`.
 
 ## Creem Setup
 
 1. Create Creem products for:
-   - Starter monthly / yearly
-   - Pro monthly / yearly
-   - Scale monthly / yearly
-   - Small / medium / large credit top-up packs
+   - Echo Starter monthly / yearly
+   - Echo Pro monthly / yearly
+   - Echo Scale monthly / yearly
+   - Echo Small / Growth / Scale top-up packs
+   Use [`creem-products.txt`](./creem-products.txt) for the exact product names and descriptions.
 2. Paste those product IDs into `.env.local`.
 3. Set your Creem webhook endpoint to:
-   - `https://your-domain.com/api/webhooks/creem`
+   - `https://echo-ecru-nine.vercel.app/api/webhooks/creem`
 4. Copy the Creem API key and webhook secret into `.env.local`.
 
 ## Local Development
@@ -151,8 +154,8 @@ One-click deploy button template:
 Before deploying:
 
 1. Add all environment variables in Vercel.
-2. Add your production auth callback URL in Supabase.
-3. Set the production Creem webhook URL.
+2. Add `https://echo-ecru-nine.vercel.app/auth/callback` in Supabase if this stays the production domain.
+3. Set `https://echo-ecru-nine.vercel.app/api/webhooks/creem` as the Creem webhook URL if this stays the production domain.
 4. Redeploy after adding the variables.
 
 ## Verification
@@ -165,4 +168,4 @@ Current verification run in this repo:
 ## Notes
 
 - Dashboard and auth routes are forced dynamic because they depend on runtime auth and billing state.
-- The existing `Support Co` marketing pages were intentionally preserved while the billing/auth starter infrastructure was added around them.
+- The existing `Echo` marketing pages were intentionally preserved while the billing/auth starter infrastructure was added around them.

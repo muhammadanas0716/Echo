@@ -14,10 +14,10 @@ type LandingNavProps = {
 
 export default function LandingNav({
   variant = "ocean",
-  brandName = "Support Co",
-  brandAlt = "Support Co logo",
+  brandName = "Echo",
+  brandAlt = "Echo logo",
   primaryLabel = "Book Demo",
-  primaryHref = "mailto:hello@echobills.space?subject=Support%20Co%20Demo",
+  primaryHref = "mailto:hello@echobills.space?subject=Echo%20Demo",
 }: LandingNavProps) {
   const [scrolled, setScrolled] = useState(false);
   const isOcean = variant === "ocean";

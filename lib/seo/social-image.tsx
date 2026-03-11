@@ -112,7 +112,7 @@ export function renderSocialImage({ label, title, subtitle, chips = [] }: Social
               opacity: 0.5,
             }}
           >
-            supportco.ai
+            echo-ecru-nine.vercel.app
           </div>
         </div>
 

@@ -114,7 +114,7 @@ export default function GlobalError({
                   Go Home
                 </Link>
                 <a
-                  href="mailto:hello@echobills.space?subject=Support%20Co%20Global%20Error"
+                  href="mailto:hello@echobills.space?subject=Echo%20Global%20Error"
                   style={{
                     padding: "12px 22px",
                     background: "#fef3c7",

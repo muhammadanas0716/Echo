@@ -10,9 +10,9 @@ import {
 } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Terms of Service - Support Co",
+  title: "Terms of Service - Echo",
   description:
-    "Detailed Terms of Service for Support Co, including service usage, payments, customer content, and AI limitations.",
+    "Detailed Terms of Service for Echo, including service usage, payments, customer content, and AI limitations.",
 };
 
 const sections = [
@@ -21,7 +21,7 @@ const sections = [
     title: "1. The service",
     color: "bg-[var(--mint)]",
     intro:
-      "Support Co provides software for creating, managing, and operating AI-assisted support workflows.",
+      "Echo provides software for creating, managing, and operating AI-assisted support workflows.",
     points: [
       "The service may include AI support agents, knowledge ingestion, agent configuration, routing logic, analytics, credits, and related support tooling.",
       "Some features are available on free plans, while others require a paid plan or future rollout.",
@@ -49,7 +49,7 @@ const sections = [
     intro:
       "You keep ownership of your content, but you need the right to use whatever you connect or upload.",
     points: [
-      "You retain ownership of the materials you upload or connect, including documentation, policies, transcripts, FAQs, and related support content.",
+      "You retain ownership of the materials you upload or connect, including documentation, policies, transcripts, FAQs, and related echontent.",
       "You give us the limited rights needed to host, process, index, route, and display that content in order to operate the service for you.",
       "You must not upload content you do not have rights to use.",
       "You must not use the service for unlawful activity, abusive automation, malware, spam, harassment, credential theft, or attempts to gain unauthorized access.",
@@ -78,7 +78,7 @@ const sections = [
     intro:
       "AI systems can be useful and still be imperfect. That reality matters here.",
     points: [
-      "Support Co can help route, draft, summarize, and answer support questions, but it may still generate incomplete or incorrect output.",
+      "Echo can help route, draft, summarize, and answer support questions, but it may still generate incomplete or incorrect output.",
       "You are responsible for deciding how much autonomy your agents have and whether certain workflows require human review.",
       "The service should not be treated as legal, medical, financial, or other regulated professional advice unless you separately validate it for that use.",
       "You should review high-risk workflows, especially where refunds, access permissions, compliance issues, or irreversible actions are involved.",

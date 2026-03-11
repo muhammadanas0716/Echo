@@ -31,7 +31,7 @@ export type CreditPack = {
 export const starterPlans: StarterPlan[] = [
   {
     key: "starter",
-    name: "Starter",
+    name: "Echo Starter",
     tagline: "First paying customers",
     description: "A clean baseline for shipping your first real SaaS billing flow.",
     monthlyPriceLabel: "$19",
@@ -49,7 +49,7 @@ export const starterPlans: StarterPlan[] = [
   },
   {
     key: "pro",
-    name: "Pro",
+    name: "Echo Pro",
     tagline: "Launch seriously",
     description: "The default paid plan for most SaaS teams and AI products.",
     popular: true,
@@ -68,7 +68,7 @@ export const starterPlans: StarterPlan[] = [
   },
   {
     key: "scale",
-    name: "Scale",
+    name: "Echo Scale",
     tagline: "Heavier billing logic",
     description: "For products that want credits, top-ups, and a fuller billing back office.",
     monthlyPriceLabel: "$99",
@@ -89,7 +89,7 @@ export const starterPlans: StarterPlan[] = [
 export const creditPacks: CreditPack[] = [
   {
     key: "small",
-    name: "Small Top-up",
+    name: "Echo Small Top-up",
     credits: 100,
     priceLabel: "$15",
     productId: env.topups.small,
@@ -97,7 +97,7 @@ export const creditPacks: CreditPack[] = [
   },
   {
     key: "medium",
-    name: "Growth Top-up",
+    name: "Echo Growth Top-up",
     credits: 500,
     priceLabel: "$59",
     productId: env.topups.medium,
@@ -105,7 +105,7 @@ export const creditPacks: CreditPack[] = [
   },
   {
     key: "large",
-    name: "Scale Top-up",
+    name: "Echo Scale Top-up",
     credits: 2000,
     priceLabel: "$199",
     productId: env.topups.large,

@@ -157,7 +157,7 @@ const SECURITY_CARDS = [
   },
   {
     title: "Sensitive knowledge handled carefully",
-    body: "Docs, policies, product notes, and connected support context are treated like operational data, not marketing exhaust.",
+    body: "Docs, policies, product notes, and connected echontext are treated like operational data, not marketing exhaust.",
     stat: "Protected by default",
     bg: "bg-[#d4f8e8]",
   },
@@ -184,14 +184,14 @@ export default function OceanLanding() {
           <h1 className="mx-auto max-w-4xl text-balance text-center font-heading text-4xl font-extrabold leading-[1.05] tracking-[-0.03em] text-[var(--charcoal)] sm:text-6xl">
             AI support agents that actually know your product.
             <br />
-            Support Co makes them feel native.
+            Echo makes them feel native.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-balance text-center text-lg font-medium text-[var(--charcoal)]/80 sm:text-xl">
             Deploy custom-designed agents across your website, Shopify store, docs, and community channels. Feed them your help center, tickets, and codebase so every answer sounds like your team.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
-              href="mailto:hello@echobills.space?subject=Support%20Co%20Demo"
+              href="mailto:hello@echobills.space?subject=Echo%20Demo"
               className="inline-flex items-center justify-center rounded-xl border-2 border-[var(--charcoal)] bg-[var(--mint)] px-7 py-3.5 font-heading text-lg font-bold text-[var(--charcoal)] shadow-[0_6px_0_#1a1a1a] transition hover:-translate-y-1 hover:shadow-[0_10px_0_#1a1a1a]"
             >
               Book Demo
@@ -217,7 +217,7 @@ export default function OceanLanding() {
             <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-[var(--charcoal)] bg-[#ebf5ff]">
               <Image
                 src="/image.png"
-                alt="Support Co agent preview"
+                alt="Echo agent preview"
                 fill
                 className="object-cover object-top"
                 priority
@@ -295,7 +295,7 @@ export default function OceanLanding() {
                   Every channel. Less repetition.
                 </h3>
                 <p className="mx-auto mt-5 max-w-2xl text-lg font-medium text-[var(--charcoal)]/70">
-                  Support Co turns scattered docs, store policies, product logic, and team know-how into a live knowledge layer for customers, bots, and human agents.
+                  Echo turns scattered docs, store policies, product logic, and team know-how into a live knowledge layer for customers, bots, and human agents.
                 </p>
               </div>
               <div className="mt-10 grid gap-4 sm:grid-cols-3">
@@ -383,7 +383,7 @@ export default function OceanLanding() {
               Specialist bots behind it.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg font-medium text-[var(--charcoal)]/70">
-              Support Co lets you run one main chatbot as the front door for every conversation. It receives the query, routes it to the right specialist agent, and keeps each bot inside its own local knowledge scope.
+              Echo lets you run one main chatbot as the front door for every conversation. It receives the query, routes it to the right specialist agent, and keeps each bot inside its own local knowledge scope.
             </p>
           </div>
 
@@ -572,7 +572,7 @@ export default function OceanLanding() {
               Encrypted first, trusted by design.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg font-medium text-[var(--charcoal)]/70">
-              The playful UI is one thing. Underneath it, Support Co treats customer knowledge like sensitive infrastructure with encryption, controlled access, and protected storage by default.
+              The playful UI is one thing. Underneath it, Echo treats customer knowledge like sensitive infrastructure with encryption, controlled access, and protected storage by default.
             </p>
           </div>
 

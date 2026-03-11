@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 function getSiteUrl() {
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://echobills.space";
+  return process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://echo-ecru-nine.vercel.app";
 }
 
 export const SITE_URL = getSiteUrl();
@@ -52,7 +52,7 @@ export function buildPageMetadata(input: BuildPageMetadataInput): Metadata {
     title: input.title,
     description: input.description,
     url: toAbsoluteUrl(canonicalPath),
-    siteName: "Support Co",
+    siteName: "Echo",
     locale: "en_US",
     type: input.kind ?? "website",
     images: [image],

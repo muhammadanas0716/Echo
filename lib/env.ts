@@ -8,15 +8,15 @@ const envSchema = z.object({
   CREEM_API_KEY: z.string().optional(),
   CREEM_WEBHOOK_SECRET: z.string().optional(),
   NEXT_PUBLIC_CREEM_TEST_MODE: z.string().optional(),
-  NEXT_PUBLIC_CREEM_STARTER_MONTHLY_PRODUCT_ID: z.string().optional(),
-  NEXT_PUBLIC_CREEM_STARTER_YEARLY_PRODUCT_ID: z.string().optional(),
-  NEXT_PUBLIC_CREEM_PRO_MONTHLY_PRODUCT_ID: z.string().optional(),
-  NEXT_PUBLIC_CREEM_PRO_YEARLY_PRODUCT_ID: z.string().optional(),
-  NEXT_PUBLIC_CREEM_SCALE_MONTHLY_PRODUCT_ID: z.string().optional(),
-  NEXT_PUBLIC_CREEM_SCALE_YEARLY_PRODUCT_ID: z.string().optional(),
-  NEXT_PUBLIC_CREEM_CREDITS_SMALL_PRODUCT_ID: z.string().optional(),
-  NEXT_PUBLIC_CREEM_CREDITS_MEDIUM_PRODUCT_ID: z.string().optional(),
-  NEXT_PUBLIC_CREEM_CREDITS_LARGE_PRODUCT_ID: z.string().optional(),
+  NEXT_PUBLIC_CREEM_ECHO_STARTER_MONTHLY_PRODUCT_ID: z.string().optional(),
+  NEXT_PUBLIC_CREEM_ECHO_STARTER_YEARLY_PRODUCT_ID: z.string().optional(),
+  NEXT_PUBLIC_CREEM_ECHO_PRO_MONTHLY_PRODUCT_ID: z.string().optional(),
+  NEXT_PUBLIC_CREEM_ECHO_PRO_YEARLY_PRODUCT_ID: z.string().optional(),
+  NEXT_PUBLIC_CREEM_ECHO_SCALE_MONTHLY_PRODUCT_ID: z.string().optional(),
+  NEXT_PUBLIC_CREEM_ECHO_SCALE_YEARLY_PRODUCT_ID: z.string().optional(),
+  NEXT_PUBLIC_CREEM_ECHO_SMALL_TOPUP_PRODUCT_ID: z.string().optional(),
+  NEXT_PUBLIC_CREEM_ECHO_GROWTH_TOPUP_PRODUCT_ID: z.string().optional(),
+  NEXT_PUBLIC_CREEM_ECHO_SCALE_TOPUP_PRODUCT_ID: z.string().optional(),
   ADMIN_EMAILS: z.string().optional(),
 });
 
@@ -46,22 +46,22 @@ export const env = {
   adminEmails: splitCsv(parsedEnv.ADMIN_EMAILS),
   products: {
     starter: {
-      monthly: parsedEnv.NEXT_PUBLIC_CREEM_STARTER_MONTHLY_PRODUCT_ID?.trim(),
-      yearly: parsedEnv.NEXT_PUBLIC_CREEM_STARTER_YEARLY_PRODUCT_ID?.trim(),
+      monthly: parsedEnv.NEXT_PUBLIC_CREEM_ECHO_STARTER_MONTHLY_PRODUCT_ID?.trim(),
+      yearly: parsedEnv.NEXT_PUBLIC_CREEM_ECHO_STARTER_YEARLY_PRODUCT_ID?.trim(),
     },
     pro: {
-      monthly: parsedEnv.NEXT_PUBLIC_CREEM_PRO_MONTHLY_PRODUCT_ID?.trim(),
-      yearly: parsedEnv.NEXT_PUBLIC_CREEM_PRO_YEARLY_PRODUCT_ID?.trim(),
+      monthly: parsedEnv.NEXT_PUBLIC_CREEM_ECHO_PRO_MONTHLY_PRODUCT_ID?.trim(),
+      yearly: parsedEnv.NEXT_PUBLIC_CREEM_ECHO_PRO_YEARLY_PRODUCT_ID?.trim(),
     },
     scale: {
-      monthly: parsedEnv.NEXT_PUBLIC_CREEM_SCALE_MONTHLY_PRODUCT_ID?.trim(),
-      yearly: parsedEnv.NEXT_PUBLIC_CREEM_SCALE_YEARLY_PRODUCT_ID?.trim(),
+      monthly: parsedEnv.NEXT_PUBLIC_CREEM_ECHO_SCALE_MONTHLY_PRODUCT_ID?.trim(),
+      yearly: parsedEnv.NEXT_PUBLIC_CREEM_ECHO_SCALE_YEARLY_PRODUCT_ID?.trim(),
     },
   },
   topups: {
-    small: parsedEnv.NEXT_PUBLIC_CREEM_CREDITS_SMALL_PRODUCT_ID?.trim(),
-    medium: parsedEnv.NEXT_PUBLIC_CREEM_CREDITS_MEDIUM_PRODUCT_ID?.trim(),
-    large: parsedEnv.NEXT_PUBLIC_CREEM_CREDITS_LARGE_PRODUCT_ID?.trim(),
+    small: parsedEnv.NEXT_PUBLIC_CREEM_ECHO_SMALL_TOPUP_PRODUCT_ID?.trim(),
+    medium: parsedEnv.NEXT_PUBLIC_CREEM_ECHO_GROWTH_TOPUP_PRODUCT_ID?.trim(),
+    large: parsedEnv.NEXT_PUBLIC_CREEM_ECHO_SCALE_TOPUP_PRODUCT_ID?.trim(),
   },
 };
 

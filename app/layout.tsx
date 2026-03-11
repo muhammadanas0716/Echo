@@ -30,8 +30,8 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Support Co - AI support agents for modern support teams",
-    template: "%s | Support Co",
+    default: "Echo - AI support agents for modern support teams",
+    template: "%s | Echo",
   },
   description:
     "Deploy AI support agents trained on your docs, help center, tickets, and codebase across web, Shopify, and community channels.",
@@ -43,12 +43,12 @@ export const metadata: Metadata = {
     "discord support bot",
     "help center ai",
     "support automation",
-    "support co",
+    "echo",
   ],
-  authors: [{ name: "Support Co", url: siteUrl }],
-  creator: "Support Co",
-  publisher: "Support Co",
-  applicationName: "Support Co",
+  authors: [{ name: "Echo", url: siteUrl }],
+  creator: "Echo",
+  publisher: "Echo",
+  applicationName: "Echo",
   category: "Customer Support Software",
   classification: "AI Support Platform",
   formatDetection: {
@@ -76,8 +76,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "Support Co",
-    title: "Support Co - AI support agents for modern support teams",
+    siteName: "Echo",
+    title: "Echo - AI support agents for modern support teams",
     description:
       "Deploy AI support agents trained on your docs, help center, tickets, and codebase across web, Shopify, and community channels.",
     images: [
@@ -85,7 +85,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Support Co AI support agent landing page",
+        alt: "Echo AI support agent landing page",
         type: "image/png",
       },
     ],
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@echobills",
     creator: "@echobills",
-    title: "Support Co - AI support agents for modern support teams",
+    title: "Echo - AI support agents for modern support teams",
     description:
       "Deploy AI support agents trained on your docs, help center, tickets, and codebase across web, Shopify, and community channels.",
     images: ["/opengraph-image"],

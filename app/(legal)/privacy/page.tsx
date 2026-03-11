@@ -11,9 +11,9 @@ import {
 } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy - Support Co",
+  title: "Privacy Policy - Echo",
   description:
-    "Detailed privacy information about what Support Co collects, why it collects it, how it secures it, and how you can control it.",
+    "Detailed privacy information about what Echo collects, why it collects it, how it secures it, and how you can control it.",
 };
 
 const sections = [
@@ -25,7 +25,7 @@ const sections = [
       "We collect the information needed to run the website, respond to inquiries, and deliver the service we describe.",
     items: [
       "Contact details you send us, such as your name, email address, company name, and the information included in your message.",
-      "Project and support context you choose to share with us during demos, onboarding discussions, or implementation planning.",
+      "Project and echontext you choose to share with us during demos, onboarding discussions, or implementation planning.",
       "Site usage data such as page visits, device data, referrers, and basic diagnostics.",
       "Operational records such as support emails, scheduling details, and internal notes needed to follow up on legitimate business conversations.",
       "Billing-related metadata from payment providers, without storing your full card details ourselves.",
@@ -79,7 +79,7 @@ const sections = [
       "There are a few lines we try to keep very clear.",
     items: [
       "We do not sell your information to advertisers or data brokers.",
-      "We do not treat your support content as ad inventory.",
+      "We do not treat your echontent as ad inventory.",
       "We do not store your full payment card details.",
       "We do not promise that AI-generated responses are infallible or suitable for every regulated use case.",
     ],
@@ -112,7 +112,7 @@ export default function PrivacyPage() {
           Privacy, without hand-waving.
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-base font-semibold leading-relaxed text-[var(--charcoal)]/60">
-          Support Co works with support data, which often means customer conversations, billing context, and internal operational knowledge. That deserves more than a vague privacy promise.
+          Echo works with support data, which often means customer conversations, billing context, and internal operational knowledge. That deserves more than a vague privacy promise.
         </p>
       </div>
 
