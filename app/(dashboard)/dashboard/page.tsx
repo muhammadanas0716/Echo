@@ -12,7 +12,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-[2rem] border-3 border-[var(--charcoal)] bg-white p-6 shadow-[0_8px_0_#1a1a1a] sm:p-8">
+      <div className="rounded-[2rem] border-3 border-[var(--charcoal)] bg-[#d4e9ff] p-6 shadow-[0_8px_0_#1a1a1a] sm:p-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)]/50">
@@ -29,7 +29,7 @@ export default async function DashboardPage() {
             <StatusBadge status={viewer.subscription?.status} />
             <Link
               href="/billing"
-              className="rounded-xl border-3 border-[var(--charcoal)] bg-[#a6ea47] px-4 py-2.5 font-heading text-sm font-bold text-[var(--charcoal)] shadow-[0_4px_0_#1a1a1a]"
+              className="inline-flex rounded-xl border-2 border-[var(--charcoal)] bg-[#a6ea47] px-4 py-2.5 font-heading text-sm font-bold text-[var(--charcoal)] shadow-[0_4px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_6px_0_#1a1a1a]"
             >
               Manage Billing
             </Link>
@@ -75,7 +75,7 @@ export default async function DashboardPage() {
               ledger.map((entry) => (
                 <div
                   key={entry.id}
-                  className="flex items-center justify-between gap-3 rounded-2xl border-2 border-[var(--charcoal)] bg-[var(--offwhite)] px-4 py-3"
+                  className="flex items-center justify-between gap-3 rounded-2xl border-2 border-[var(--charcoal)] bg-white px-4 py-3 shadow-[0_3px_0_#1a1a1a]"
                 >
                   <div>
                     <p className="text-sm font-bold text-[var(--charcoal)]">{titleCase(entry.kind)}</p>
@@ -108,7 +108,7 @@ export default async function DashboardPage() {
             ].map((item) => (
               <div
                 key={item}
-                className="rounded-2xl border-2 border-[var(--charcoal)] bg-white px-4 py-3 text-sm font-bold text-[var(--charcoal)]"
+                className="rounded-2xl border-2 border-[var(--charcoal)] bg-white p-4 text-sm font-semibold text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a]"
               >
                 {item}
               </div>

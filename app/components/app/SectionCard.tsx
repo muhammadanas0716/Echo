@@ -13,7 +13,7 @@ export default function SectionCard({
 }: SectionCardProps) {
   return (
     <section
-      className={`rounded-[2rem] border-3 border-[var(--charcoal)] ${accent} p-6 shadow-[0_8px_0_#1a1a1a] sm:p-8`}
+      className={`rounded-[2rem] border-3 border-[var(--charcoal)] ${accent} p-6 shadow-[0_6px_0_#1a1a1a] sm:p-8`}
     >
       {eyebrow ? (
         <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)]/50">

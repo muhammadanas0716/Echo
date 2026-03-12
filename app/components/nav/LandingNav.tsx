@@ -103,35 +103,37 @@ export default function LandingNav({
           >
             <Link
               href="/pricing"
-              className={`hidden font-bold text-[var(--charcoal)] transition-opacity sm:block ${
-                isOcean ? "text-sm hover:opacity-70" : "px-4 py-2 text-sm hover:opacity-80"
+              className={`hidden rounded-xl border-2 border-transparent px-3.5 py-2 font-bold text-[var(--charcoal)] transition sm:block ${
+                isOcean ? "text-sm hover:border-[var(--charcoal)]/30 hover:bg-[var(--charcoal)]/5" : "text-sm hover:bg-[var(--charcoal)]/5"
               }`}
             >
               Pricing
             </Link>
             <Link
-              href={publicLinks.demoNote}
-              className={`hidden font-bold text-[var(--charcoal)] transition-opacity xl:block ${
-                isOcean ? "text-xs hover:opacity-70" : "px-4 py-2 text-xs hover:opacity-80"
-              }`}
-            >
-              Note on the demo
-            </Link>
-            <Link
               href="/about"
-              className={`hidden font-bold text-[var(--charcoal)] transition-opacity md:block ${
-                isOcean ? "text-sm hover:opacity-70" : "px-4 py-2 text-sm hover:opacity-80"
+              className={`hidden rounded-xl border-2 border-transparent px-3.5 py-2 font-bold text-[var(--charcoal)] transition md:block ${
+                isOcean ? "text-sm hover:border-[var(--charcoal)]/30 hover:bg-[var(--charcoal)]/5" : "text-sm hover:bg-[var(--charcoal)]/5"
               }`}
             >
               About
             </Link>
             <Link
               href={publicLinks.login}
-              className={`hidden font-bold text-[var(--charcoal)] transition-opacity 2xl:block ${
-                isOcean ? "text-sm hover:opacity-70" : "px-4 py-2 text-sm hover:opacity-80"
+              className={`hidden rounded-xl border-2 border-transparent px-3.5 py-2 font-bold text-[var(--charcoal)] transition 2xl:block ${
+                isOcean ? "text-sm hover:border-[var(--charcoal)]/30 hover:bg-[var(--charcoal)]/5" : "text-sm hover:bg-[var(--charcoal)]/5"
               }`}
             >
               Log In
+            </Link>
+            <Link
+              href={publicLinks.demoNote}
+              className={`hidden rounded-xl border-2 border-[var(--charcoal)] font-bold text-[var(--charcoal)] transition xl:block ${
+                isOcean
+                  ? "bg-white px-4 py-2 text-sm shadow-[0_3px_0_#1a1a1a] hover:-translate-y-0.5 hover:shadow-[0_5px_0_#1a1a1a]"
+                  : "bg-white px-4 py-2 text-sm shadow-[0_2px_0_#000] hover:-translate-y-0.5 hover:bg-[var(--offwhite)]"
+              }`}
+            >
+              Docs
             </Link>
             <Link
               href={primaryHref}

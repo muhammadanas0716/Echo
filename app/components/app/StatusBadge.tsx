@@ -19,7 +19,7 @@ export default function StatusBadge({ status }: StatusBadgeProps) {
   const normalized = status ?? "inactive";
   return (
     <span
-      className={`inline-flex rounded-full border-2 border-[var(--charcoal)] px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)] ${
+      className={`inline-flex rounded-xl border-2 border-[var(--charcoal)] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-[var(--charcoal)] shadow-[0_2px_0_#1a1a1a] ${
         statusStyles[normalized] ?? "bg-white"
       }`}
     >

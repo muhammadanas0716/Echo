@@ -1,129 +1,82 @@
 import Link from "next/link";
 import Image from "next/image";
-import { FiArrowUpRight, FiCreditCard, FiShield, FiZap } from "react-icons/fi";
 import { publicLinks } from "@/lib/site-links";
 
 export const dynamic = "force-dynamic";
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,#90ddf0_0%,#b8edfb_50%,#d4f8ff_100%)] px-4 py-10 sm:px-6 lg:px-8">
-      <div className="pointer-events-none absolute inset-0 dotted-sea opacity-[0.08]" />
-      <div className="pointer-events-none absolute left-[6%] top-20 h-32 w-32 rounded-full bg-white/55 blur-2xl" />
-      <div className="pointer-events-none absolute right-[8%] top-28 h-24 w-40 rounded-full bg-[#d4e9ff]/90 blur-xl" />
-      <div className="pointer-events-none absolute bottom-16 left-[14%] h-28 w-44 rounded-full bg-white/45 blur-2xl" />
-      <div className="relative mx-auto max-w-5xl">
-        <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-3 rounded-full border-2 border-[var(--charcoal)] bg-white px-5 py-2.5 shadow-[0_4px_0_#1a1a1a]"
-          >
-            <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl border-2 border-[var(--charcoal)] bg-[var(--mint)]">
-              <Image src="/logo.png" alt="Echo" width={36} height={36} className="h-full w-full object-cover" />
-            </div>
-            <span className="font-heading text-lg font-extrabold text-[var(--charcoal)]">Echo</span>
+    <div className="relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,#90ddf0_0%,#b8edfb_54%,#d4f8ff_100%)]">
+      <div className="pointer-events-none absolute inset-0 dotted-sea opacity-60" />
+      <Image
+        src="/clouds/cloud1.svg"
+        alt=""
+        width={140}
+        height={80}
+        className="pointer-events-none absolute left-[2%] top-28 ocean-float opacity-90"
+      />
+      <Image
+        src="/clouds/cloud2.svg"
+        alt=""
+        width={120}
+        height={70}
+        className="pointer-events-none absolute right-[4%] top-24 ocean-float-delayed opacity-90"
+      />
+      <Image
+        src="/clouds/cloud3.svg"
+        alt=""
+        width={100}
+        height={60}
+        className="pointer-events-none absolute bottom-32 left-[13%] ocean-float-fast opacity-80"
+      />
+      <Image
+        src="/clouds/cloud4.svg"
+        alt=""
+        width={110}
+        height={65}
+        className="pointer-events-none absolute bottom-28 right-[18%] ocean-float opacity-80"
+      />
+
+      <div className="absolute bottom-0 left-0 right-0 h-32">
+        <svg
+          className="absolute bottom-0 left-0 h-full w-full"
+          viewBox="0 0 1440 100"
+          preserveAspectRatio="none"
+          aria-hidden
+        >
+          <defs>
+            <linearGradient id="auth-ground" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#95ddc1" />
+              <stop offset="100%" stopColor="#7fd7b8" />
+            </linearGradient>
+          </defs>
+          <path
+            fill="url(#auth-ground)"
+            stroke="var(--charcoal)"
+            strokeWidth="2"
+            d="M0,50 C90,10 180,90 270,50 C360,10 450,90 540,50 C630,10 720,90 810,50 C900,10 990,90 1080,50 C1170,10 1260,90 1350,50 C1410,10 1440,50 1440,50 L1440,100 L0,100 Z"
+          />
+        </svg>
+      </div>
+
+      <div className="relative flex min-h-screen flex-col items-center px-4 pt-12 pb-32 sm:px-6">
+        <Link
+          href="/"
+          className="mb-8 inline-flex items-center gap-2 rounded-xl border-2 border-[var(--charcoal)] bg-white px-5 py-2.5 shadow-[0_4px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_6px_0_#1a1a1a]"
+        >
+          <Image src="/logo.png" alt="Echo" width={28} height={28} className="h-7 w-7 object-cover" />
+          <span className="font-heading text-base font-extrabold text-[var(--charcoal)]">Echo</span>
+        </Link>
+
+        <div className="w-full max-w-md">{children}</div>
+
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm font-semibold text-[var(--charcoal)]/70">
+          <Link href={publicLinks.pricing} className="underline decoration-2 underline-offset-4 hover:text-[var(--charcoal)]">
+            Pricing
           </Link>
-          <div className="rounded-full border-2 border-[var(--charcoal)] bg-[#a6ea47] px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a]">
-            Supabase + Creem
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <Link
-              href={publicLinks.pricing}
-              className="rounded-full border-2 border-[var(--charcoal)] bg-white px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a] transition hover:-translate-y-0.5"
-            >
-              Pricing
-            </Link>
-            <Link
-              href={publicLinks.getStarted}
-              className="rounded-full border-2 border-[var(--charcoal)] bg-[#ffd66b] px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a] transition hover:-translate-y-0.5"
-            >
-              Start Free
-            </Link>
-          </div>
-        </div>
-        <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <div className="relative rounded-[2.3rem] border-3 border-[var(--charcoal)] bg-[#d4e9ff] p-8 shadow-[0_8px_0_#1a1a1a]">
-            <div className="pointer-events-none absolute -left-4 top-10 h-16 w-16 rounded-full border-3 border-[var(--charcoal)] bg-white/70" />
-            <div className="pointer-events-none absolute right-6 top-6 h-10 w-24 rounded-full border-3 border-[var(--charcoal)] bg-white/70" />
-            <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)]/50">
-              Echo Access
-            </p>
-            <h1 className="mt-4 font-heading text-4xl font-extrabold leading-[0.98] text-[var(--charcoal)] sm:text-[3.25rem]">
-              Secure entry.
-              <br />
-              Bright billing.
-              <br />
-              Zero dead ends.
-            </h1>
-            <p className="mt-4 max-w-xl text-sm font-semibold leading-relaxed text-[var(--charcoal)]/65">
-              Sign in, subscribe, manage credits, and recover accounts inside the same playful Echo
-              system. The public site and the protected app now share one visual language instead of
-              splitting into two different products.
-            </p>
-
-            <div className="mt-7 grid gap-3 sm:grid-cols-2">
-              {[
-                {
-                  icon: FiShield,
-                  title: "Protected by default",
-                  body: "SSR auth, server checks, webhook verification, and RLS-backed data ownership.",
-                  tone: "bg-white",
-                },
-                {
-                  icon: FiCreditCard,
-                  title: "Billing-aware routes",
-                  body: "Customers can subscribe, upgrade, downgrade, cancel, and open the Creem portal.",
-                  tone: "bg-[#fff7cf]",
-                },
-                {
-                  icon: FiZap,
-                  title: "Credits included",
-                  body: "Wallet balances, renewal top-ups, one-off packs, and usage debits already wired.",
-                  tone: "bg-[#d4f8e8]",
-                },
-                {
-                  icon: FiArrowUpRight,
-                  title: "Real navigation",
-                  body: "Pricing, sign-up, login, and billing entry points now route into the app.",
-                  tone: "bg-[#ffd7d2]",
-                },
-              ].map((item, index) => (
-                <div
-                  key={item.title}
-                  className={`rounded-[1.6rem] border-3 border-[var(--charcoal)] px-4 py-4 shadow-[0_4px_0_#1a1a1a] ${item.tone}`}
-                  style={{ transform: `rotate(${index % 2 === 0 ? "-1deg" : "1deg"})` }}
-                >
-                  <item.icon className="h-5 w-5 text-[var(--charcoal)]" />
-                  <p className="mt-3 text-sm font-black text-[var(--charcoal)]">{item.title}</p>
-                  <p className="mt-1 text-xs font-semibold leading-relaxed text-[var(--charcoal)]/65">
-                    {item.body}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-7 flex flex-wrap gap-3">
-              {[
-                { label: "See pricing", href: publicLinks.pricing, bg: "bg-white" },
-                { label: "Open billing", href: publicLinks.billing, bg: "bg-[#fff7cf]" },
-                { label: "Back home", href: publicLinks.home, bg: "bg-[#d4f8e8]" },
-              ].map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`rounded-full border-2 border-[var(--charcoal)] px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a] transition hover:-translate-y-0.5 ${link.bg}`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className="relative px-2 pb-6 pt-4 sm:px-4">
-            <div className="absolute inset-x-4 inset-y-8 rounded-[2.5rem] border-3 border-[var(--charcoal)] bg-[#ffd7d2] shadow-[0_8px_0_#1a1a1a]" />
-            <div className="absolute inset-x-0 inset-y-0 rounded-[2.8rem] border-3 border-[var(--charcoal)] bg-white/40" />
-            <div className="relative">{children}</div>
-          </div>
+          <Link href={publicLinks.home} className="underline decoration-2 underline-offset-4 hover:text-[var(--charcoal)]">
+            Home
+          </Link>
         </div>
       </div>
     </div>

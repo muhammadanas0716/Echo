@@ -55,6 +55,13 @@ export async function changePlanAction(formData: FormData) {
     redirectWithMessage("message", "You are already on that plan.");
   }
 
+  if (viewer.subscription.status === "scheduled_cancel") {
+    redirectWithMessage(
+      "error",
+      "Cannot change plan while cancellation is scheduled. Use the customer portal to reactivate first."
+    );
+  }
+
   const currentRank = planRank[(viewer.subscription.plan_key as PlanKey) ?? "starter"] ?? 0;
   const nextRank = planRank[planKey] ?? 0;
   const updateBehavior =
@@ -71,8 +78,15 @@ export async function changePlanAction(formData: FormData) {
       "message",
       "Plan change requested. Billing state will finalize after Creem webhook sync."
     );
-  } catch {
-    redirect("/portal");
+  } catch (err) {
+    const raw = err instanceof Error ? err.message : "Plan change failed.";
+    const msg =
+      raw.toLowerCase().includes("forbidden")
+        ? "Permission denied. Check that your Creem API key and test mode match your subscription, or use the customer portal."
+        : raw.length > 200
+          ? `${raw.slice(0, 197)}...`
+          : raw;
+    redirectWithMessage("error", msg || "Plan change failed. Try the customer portal or contact support.");
   }
 }
 
@@ -83,15 +97,24 @@ export async function cancelSubscriptionAction() {
     redirectWithMessage("error", "No subscription found to cancel.");
   }
 
-  const creem = getCreemClient();
-  await creem.subscriptions.cancel({
-    subscriptionId: viewer.subscription.creem_subscription_id,
-    mode: "scheduled",
-  });
-  await markSubscriptionCancelScheduled(viewer.subscription.creem_subscription_id);
+  try {
+    const creem = getCreemClient();
+    await creem.subscriptions.cancel({
+      subscriptionId: viewer.subscription.creem_subscription_id,
+      mode: "scheduled",
+    });
+    await markSubscriptionCancelScheduled(viewer.subscription.creem_subscription_id);
 
-  redirectWithMessage(
-    "message",
-    "Cancellation scheduled. Access stays active until the current billing period ends."
-  );
+    redirectWithMessage(
+      "message",
+      "Cancellation scheduled. Access stays active until the current billing period ends."
+    );
+  } catch (err) {
+    const raw = err instanceof Error ? err.message : "Cancellation failed.";
+    const msg =
+      raw.toLowerCase().includes("forbidden")
+        ? "Permission denied. Check that your Creem API key and test mode match your subscription, or use the customer portal."
+        : raw;
+    redirectWithMessage("error", msg || "Cancellation failed. Try the customer portal or contact support.");
+  }
 }

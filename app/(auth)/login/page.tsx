@@ -1,7 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
+import { FiArrowRight, FiMail, FiLock } from "react-icons/fi";
 import SubmitButton from "@/app/components/app/SubmitButton";
 import FormField from "@/app/components/ui/FormField";
 import ErrorMessage from "@/app/components/ui/ErrorMessage";
+import PasswordInput from "@/app/components/ui/PasswordInput";
 import { googleAuthAction, loginAction } from "@/app/(auth)/actions";
 import { publicLinks } from "@/lib/site-links";
 
@@ -16,40 +19,35 @@ export default async function LoginPage({
   const next = typeof params.next === "string" ? params.next : "/dashboard";
 
   return (
-    <div className="rounded-[2rem] border-3 border-[var(--charcoal)] bg-white p-8 shadow-[0_10px_0_#1a1a1a] sm:p-10">
-      <div className="flex flex-wrap items-center gap-3">
-        <div className="rounded-full border-2 border-[var(--charcoal)] bg-[#fff7cf] px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a]">
-          Returning customer
-        </div>
-        <Link
-          href={publicLinks.pricing}
-          className="rounded-full border-2 border-[var(--charcoal)] bg-[#d4e9ff] px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a] transition hover:-translate-y-0.5"
-        >
-          View plans
-        </Link>
+    <div className="rounded-[2rem] border-2 border-[var(--charcoal)] bg-white p-8 shadow-[0_12px_0_#1a1a1a] sm:p-10">
+      <div className="mb-6 flex items-center gap-2 rounded-xl border-2 border-[var(--charcoal)] bg-[#d4e9ff] px-4 py-2 w-fit">
+        <Image src="/logo.png" alt="" width={24} height={24} className="h-6 w-6 object-cover" />
+        <span className="font-heading text-sm font-extrabold text-[var(--charcoal)]">Echo</span>
       </div>
-      <h2 className="mt-4 font-heading text-3xl font-extrabold text-[var(--charcoal)] sm:text-[2.35rem]">
-        Welcome back to Echo.
-      </h2>
-      <p className="mt-2 max-w-lg text-sm font-semibold leading-relaxed text-[var(--charcoal)]/60">
-        Sign in to manage billing, inspect subscription status, and keep your credits ledger moving
-        without leaving the app.
+
+      <span className="inline-flex rounded-xl border-2 border-[var(--charcoal)] bg-[#a6ea47] px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a]">
+        Welcome back
+      </span>
+      <h1 className="mt-5 font-heading text-3xl font-extrabold text-[var(--charcoal)] sm:text-4xl">
+        Sign in to Echo
+      </h1>
+      <p className="mt-2 text-sm font-medium text-[var(--charcoal)]/60">
+        Your subscriptions missed you.
       </p>
 
       {message ? (
-        <div className="mt-5 rounded-[1.4rem] border-3 border-[var(--charcoal)] bg-[#d4f8e8] px-4 py-4 text-sm font-semibold text-[var(--charcoal)] shadow-[0_4px_0_#1a1a1a]">
+        <div className="mt-5 rounded-xl border-2 border-[var(--charcoal)] bg-[#d4f8e8] px-4 py-3 text-sm font-semibold text-[var(--charcoal)]">
           {message}
         </div>
       ) : null}
-
-      <div className="mt-5">
+      <div className="mt-4">
         <ErrorMessage message={error ?? ""} />
       </div>
 
       <form action={googleAuthAction} className="mt-6">
         <input type="hidden" name="next" value={next} />
         <SubmitButton
-          className="w-full bg-[#d4e9ff] hover:-translate-y-0.5 hover:bg-[#c9e0ff] hover:shadow-[0_6px_0_#1a1a1a]"
+          className="w-full rounded-xl border-2 border-[var(--charcoal)] bg-[#d4e9ff] shadow-[0_4px_0_#1a1a1a] hover:-translate-y-0.5 hover:shadow-[0_6px_0_#1a1a1a]"
           pendingLabel="Redirecting..."
         >
           Continue with Google
@@ -64,58 +62,50 @@ export default async function LoginPage({
         <div className="h-px flex-1 bg-[var(--charcoal)]/15" />
       </div>
 
-      <form action={loginAction} className="space-y-4">
+      <form action={loginAction} className="space-y-5">
         <input type="hidden" name="next" value={next} />
         <FormField label="Email" required>
-          <input
-            type="email"
-            name="email"
-            required
-            className="w-full rounded-[1.2rem] border-3 border-[var(--charcoal)] bg-white px-4 py-3.5 font-semibold text-[var(--charcoal)] shadow-[0_4px_0_#1a1a1a] outline-none transition placeholder:text-[var(--charcoal)]/35 focus:-translate-y-0.5 focus:shadow-[0_6px_0_#1a1a1a]"
-          />
+          <div className="relative">
+            <FiMail className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--charcoal)]/40" />
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="you@example.com"
+              className="w-full rounded-xl border-2 border-[var(--charcoal)]/20 bg-white py-3.5 pl-12 pr-4 font-medium text-[var(--charcoal)] outline-none transition placeholder:text-[var(--charcoal)]/40 focus:border-[var(--charcoal)] focus:ring-2 focus:ring-[var(--charcoal)]/10"
+            />
+          </div>
         </FormField>
         <FormField label="Password" required>
-          <input
-            type="password"
-            name="password"
-            required
-            className="w-full rounded-[1.2rem] border-3 border-[var(--charcoal)] bg-white px-4 py-3.5 font-semibold text-[var(--charcoal)] shadow-[0_4px_0_#1a1a1a] outline-none transition focus:-translate-y-0.5 focus:shadow-[0_6px_0_#1a1a1a]"
-          />
+          <div className="relative">
+            <FiLock className="absolute left-4 top-1/2 z-10 h-4 w-4 -translate-y-1/2 text-[var(--charcoal)]/40" />
+            <PasswordInput name="password" required placeholder="••••••••" />
+          </div>
         </FormField>
         <SubmitButton
-          className="w-full bg-[#a6ea47] hover:-translate-y-0.5 hover:bg-[var(--mint)] hover:shadow-[0_6px_0_#1a1a1a]"
-          pendingLabel="Logging in..."
+          className="w-full rounded-xl border-2 border-[var(--charcoal)] bg-[#a6ea47] px-5 py-3.5 font-heading text-base font-bold shadow-[0_5px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_7px_0_#1a1a1a]"
+          pendingLabel="Signing in..."
         >
-          Log In
+          <span className="flex items-center justify-center gap-2">
+            Sign In
+            <FiArrowRight className="h-4 w-4" />
+          </span>
         </SubmitButton>
       </form>
 
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-3 text-sm font-semibold text-[var(--charcoal)]/65">
-        <Link href="/forgot-password" className="underline decoration-2 underline-offset-4">
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-3 text-sm font-medium text-[var(--charcoal)]/70">
+        <Link href="/forgot-password" className="underline decoration-2 underline-offset-4 hover:text-[var(--charcoal)]">
           Forgot password?
         </Link>
-        <Link href={`/signup?next=${encodeURIComponent(next)}`} className="underline decoration-2 underline-offset-4">
-          Create account
-        </Link>
-      </div>
-
-      <div className="mt-6 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-[1.5rem] border-3 border-[var(--charcoal)] bg-[#fff7cf] px-4 py-4 shadow-[0_4px_0_#1a1a1a]">
-          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)]/50">
-            After login
-          </p>
-          <p className="mt-2 text-sm font-bold text-[var(--charcoal)]">
-            Open billing, review plan status, and launch the customer portal in one place.
-          </p>
-        </div>
-        <div className="rounded-[1.5rem] border-3 border-[var(--charcoal)] bg-[#d4e9ff] px-4 py-4 shadow-[0_4px_0_#1a1a1a]">
-          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)]/50">
-            Need a plan?
-          </p>
-          <p className="mt-2 text-sm font-bold text-[var(--charcoal)]">
-            Start on pricing first, then we’ll route you directly into checkout-ready billing.
-          </p>
-        </div>
+        <span>
+          Don&apos;t have an account?{" "}
+          <Link
+            href={`/signup?next=${encodeURIComponent(next)}`}
+            className="font-bold underline decoration-2 underline-offset-4 text-[var(--charcoal)] hover:no-underline"
+          >
+            Sign up free
+          </Link>
+        </span>
       </div>
     </div>
   );

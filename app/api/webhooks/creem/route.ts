@@ -1,6 +1,13 @@
 import { Webhook } from "@creem_io/nextjs";
 import { env } from "@/lib/env";
 import { beginWebhookEvent, completeWebhookEvent, failWebhookEvent } from "@/lib/db/webhooks";
+
+function dateToIso(d: Date | string | number | null | undefined): string {
+  if (d == null) return "";
+  if (typeof d === "string") return d;
+  if (typeof d === "number") return new Date(d).toISOString();
+  return d instanceof Date ? d.toISOString() : "";
+}
 import {
   handleCheckoutCompleted,
   handleGrantAccess,
@@ -53,7 +60,7 @@ export const POST = Webhook({
   onGrantAccess: async (event) =>
     withWebhookProcessing(
       {
-        processingKey: `grant:${event.reason}:${event.id}:${event.last_transaction_id ?? event.current_period_end_date.toISOString()}`,
+        processingKey: `grant:${event.reason}:${event.id}:${event.last_transaction_id ?? dateToIso(event.current_period_end_date)}`,
         eventType: `grant:${event.reason}`,
         payload: event,
       },
@@ -62,7 +69,7 @@ export const POST = Webhook({
   onRevokeAccess: async (event) =>
     withWebhookProcessing(
       {
-        processingKey: `revoke:${event.reason}:${event.id}:${event.current_period_end_date.toISOString()}`,
+        processingKey: `revoke:${event.reason}:${event.id}:${dateToIso(event.current_period_end_date)}`,
         eventType: `revoke:${event.reason}`,
         payload: event,
       },

@@ -9,6 +9,12 @@ import { grantCredits } from "@/lib/db/credits";
 import { upsertSubscriptionFromCreem, type SubscriptionSyncInput } from "@/lib/db/subscriptions";
 import { getUserByEmail, setUserCreemCustomerId } from "@/lib/db/users";
 
+function dateToIso(d: Date | string | number | null | undefined): string {
+  if (d == null) return "";
+  if (typeof d === "string") return d;
+  if (typeof d === "number") return new Date(d).toISOString();
+  return d instanceof Date ? d.toISOString() : "";
+}
 type JsonSafe = string | number | boolean | null | JsonSafe[] | { [key: string]: JsonSafe };
 
 function toJsonSafe<T>(value: T): JsonSafe {
@@ -18,10 +24,13 @@ function toJsonSafe<T>(value: T): JsonSafe {
 function toSubscriptionSyncInput(
   event: GrantAccessContext | RevokeAccessContext | FlatSubscriptionEvent<string>
 ): SubscriptionSyncInput {
+  const customerId = typeof event.customer === "string" ? event.customer : event.customer?.id;
+  const productId = typeof event.product === "string" ? event.product : event.product?.id;
+  if (!customerId || !productId) throw new Error("Missing customer or product in webhook");
   return {
     id: event.id,
-    customerId: event.customer.id,
-    productId: event.product.id,
+    customerId,
+    productId,
     status: event.status,
     canceledAt: event.canceled_at,
     createdAt: event.created_at,
@@ -33,21 +42,22 @@ function toSubscriptionSyncInput(
 }
 
 function toCheckoutSubscriptionSyncInput(event: FlatCheckoutCompleted): SubscriptionSyncInput | null {
-  if (!event.subscription) {
-    return null;
-  }
-
+  if (!event.subscription) return null;
+  const sub = event.subscription;
+  const customerId = typeof event.customer === "string" ? event.customer : event.customer?.id ?? sub.customer;
+  const productId = typeof event.product === "string" ? event.product : event.product?.id;
+  if (!customerId || !productId) return null;
   return {
-    id: event.subscription.id,
-    customerId: event.customer?.id ?? event.subscription.customer,
-    productId: event.product.id,
-    status: event.subscription.status,
-    canceledAt: event.subscription.canceled_at,
-    createdAt: event.subscription.created_at,
-    currentPeriodStartDate: event.subscription.current_period_start_date,
-    currentPeriodEndDate: event.subscription.current_period_end_date,
-    lastTransactionId: event.subscription.last_transaction_id ?? null,
-    metadata: toJsonSafe(event.subscription.metadata ?? {}),
+    id: sub.id,
+    customerId,
+    productId,
+    status: sub.status,
+    canceledAt: sub.canceled_at,
+    createdAt: sub.created_at,
+    currentPeriodStartDate: sub.current_period_start_date,
+    currentPeriodEndDate: sub.current_period_end_date,
+    lastTransactionId: sub.last_transaction_id ?? null,
+    metadata: toJsonSafe(sub.metadata ?? {}),
   };
 }
 
@@ -158,7 +168,7 @@ export async function handleGrantAccess(event: GrantAccessContext) {
 
   const sourceKey =
     event.reason === "subscription_paid"
-      ? `subscription:${event.id}:renewal:${event.last_transaction_id ?? event.current_period_end_date.toISOString()}`
+      ? `subscription:${event.id}:renewal:${event.last_transaction_id ?? dateToIso(event.current_period_end_date)}`
       : `subscription:${event.id}:activation`;
 
   await grantCredits({

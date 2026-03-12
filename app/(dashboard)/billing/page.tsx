@@ -1,11 +1,13 @@
 import Link from "next/link";
 import MetricCard from "@/app/components/app/MetricCard";
-import SectionCard from "@/app/components/app/SectionCard";
+import PortalButton from "@/app/components/app/PortalButton";
 import SubmitButton from "@/app/components/app/SubmitButton";
 import StatusBadge from "@/app/components/app/StatusBadge";
 import { cancelSubscriptionAction, changePlanAction } from "@/app/(dashboard)/billing/actions";
 import { buildCheckoutHref } from "@/lib/billing/checkout";
 import { creditPacks, starterPlans } from "@/lib/billing/catalog";
+import { syncSubscriptionFromCheckoutSuccess } from "@/lib/billing/sync-on-success";
+import { getCurrentSubscription } from "@/lib/db/subscriptions";
 import { requireViewer } from "@/lib/auth/session";
 import { formatDate, titleCase } from "@/lib/formatters";
 
@@ -16,82 +18,97 @@ export default async function BillingPage({
 }) {
   const params = await searchParams;
   const viewer = await requireViewer();
+  const subscriptionId = typeof params.subscription_id === "string" ? params.subscription_id : null;
+  const customerId = typeof params.customer_id === "string" ? params.customer_id : null;
   const message = typeof params.message === "string" ? params.message : null;
   const error = typeof params.error === "string" ? params.error : null;
 
+  if (subscriptionId && message === "checkout-started") {
+    await syncSubscriptionFromCheckoutSuccess(subscriptionId, viewer.profile.id, customerId);
+    viewer.subscription = await getCurrentSubscription(viewer.profile.id);
+  }
+
   return (
     <div className="space-y-6">
-      <div className="rounded-[2rem] border-3 border-[var(--charcoal)] bg-white p-6 shadow-[0_8px_0_#1a1a1a] sm:p-8">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <section className="relative overflow-hidden rounded-[2rem] border-3 border-[var(--charcoal)] bg-[#d4e9ff] p-6 shadow-[0_8px_0_#1a1a1a] sm:p-8">
+        <div className="pointer-events-none absolute inset-0 dotted-sea opacity-[0.05]" />
+        <div className="relative flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)]/50">
+            <span className="inline-flex rounded-xl border-2 border-[var(--charcoal)] bg-white px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)] shadow-[0_2px_0_#1a1a1a]">
               Billing
-            </p>
-            <h1 className="mt-3 font-heading text-4xl font-extrabold text-[var(--charcoal)]">
+            </span>
+            <h1 className="mt-4 font-heading text-4xl font-extrabold text-[var(--charcoal)]">
               Manage subscriptions and credits.
             </h1>
             <p className="mt-3 max-w-2xl text-sm font-semibold leading-relaxed text-[var(--charcoal)]/65">
-              This page shows the full starter surface: checkout, upgrades, downgrades, scheduled cancellation, customer portal, and top-up packs.
+              Checkout, upgrades, downgrades, customer portal, and top-up packs.
             </p>
           </div>
           <div className="flex items-center gap-3">
             <StatusBadge status={viewer.subscription?.status} />
             {viewer.subscription ? (
-              <Link
-                href="/portal"
-                className="rounded-xl border-3 border-[var(--charcoal)] bg-[#d4e9ff] px-4 py-2.5 font-heading text-sm font-bold text-[var(--charcoal)] shadow-[0_4px_0_#1a1a1a]"
-              >
+              <PortalButton className="inline-flex rounded-xl border-2 border-[var(--charcoal)] bg-white px-4 py-2.5 font-heading text-sm font-bold text-[var(--charcoal)] shadow-[0_4px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_6px_0_#1a1a1a] disabled:opacity-60">
                 Open Portal
-              </Link>
+              </PortalButton>
             ) : null}
           </div>
         </div>
-      </div>
+      </section>
 
       {message ? (
-        <div className="rounded-2xl border-2 border-[var(--charcoal)] bg-[#d4f8e8] px-4 py-3 text-sm font-semibold text-[var(--charcoal)]">
+        <div className="rounded-2xl border-2 border-[var(--charcoal)] bg-[#d4f8e8] px-4 py-3 text-sm font-semibold text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a]">
           {message}
         </div>
       ) : null}
       {error ? (
-        <div className="rounded-2xl border-2 border-[var(--charcoal)] bg-[#ffd7d2] px-4 py-3 text-sm font-semibold text-[var(--charcoal)]">
+        <div className="rounded-2xl border-2 border-[var(--charcoal)] bg-[#ffd7d2] px-4 py-3 text-sm font-semibold text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a]">
           {error}
         </div>
       ) : null}
 
-      <div className="grid gap-4 md:grid-cols-3">
+      <section className="relative overflow-hidden rounded-[2rem] border-3 border-[var(--charcoal)] bg-[#99e8cf] p-6 shadow-[0_6px_0_#1a1a1a] sm:p-8">
+        <div className="pointer-events-none absolute inset-0 dotted-sea opacity-[0.06]" />
+        <div className="relative grid gap-4 md:grid-cols-3">
         <MetricCard
           label="Current Plan"
           value={titleCase(viewer.subscription?.plan_key ?? "none")}
           detail="The local subscription record mirrors Creem webhook state."
-          accent="bg-[#d4e9ff]"
+          accent="bg-white"
         />
         <MetricCard
-          label="Renewal Date"
+          label={viewer.subscription?.status === "scheduled_cancel" ? "Canceling at" : "Renewal Date"}
           value={formatDate(viewer.subscription?.current_period_end)}
-          detail="Scheduled cancellations preserve access until this date."
-          accent="bg-[#fef3c7]"
+          detail={viewer.subscription?.status === "scheduled_cancel" ? "Access until this date." : "Scheduled cancellations preserve access until this date."}
+          accent="bg-white"
         />
         <MetricCard
           label="Credits / Cycle"
           value={`${viewer.subscription?.plan_key ? starterPlans.find((plan) => plan.key === viewer.subscription?.plan_key)?.[viewer.subscription?.price_interval === "yearly" ? "yearlyCredits" : "monthlyCredits"] ?? 0 : 0}`}
           detail="Renewal webhooks auto top up the wallet."
-          accent="bg-[#d4f8e8]"
+          accent="bg-white"
         />
       </div>
+      </section>
 
-      <SectionCard title="Subscription plans" eyebrow="Config-driven catalog">
-        <div className="grid gap-5 xl:grid-cols-3">
-          {starterPlans.map((plan) => {
+      <section className="relative overflow-hidden rounded-[2rem] border-3 border-[var(--charcoal)] bg-[#d4f8e8] p-6 shadow-[0_6px_0_#1a1a1a] sm:p-8">
+        <div className="pointer-events-none absolute inset-0 dotted-sea opacity-[0.08]" />
+        <div className="relative">
+        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)]/50">
+          Subscriptions
+        </p>
+        <h2 className="mt-2 font-heading text-2xl font-extrabold text-[var(--charcoal)]">Subscription plans</h2>
+        <div className="mt-6 grid gap-5 xl:grid-cols-3">
+          {starterPlans.map((plan, index) => {
             const isCurrent = viewer.subscription?.plan_key === plan.key;
             const currentInterval = viewer.subscription?.price_interval === "yearly" ? "yearly" : "monthly";
 
             return (
               <article
                 key={plan.key}
-                className={`rounded-[1.8rem] border-3 border-[var(--charcoal)] p-5 shadow-[0_6px_0_#1a1a1a] ${
+                className={`rounded-[1.9rem] border-3 border-[var(--charcoal)] p-5 shadow-[0_5px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_7px_0_#1a1a1a] ${
                   plan.popular ? "bg-[#99e8cf]" : "bg-white"
                 }`}
+                style={{ transform: `rotate(${index % 2 === 0 ? "-1deg" : "1deg"})` }}
               >
                 <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)]/50">
                   {plan.tagline}
@@ -110,7 +127,7 @@ export default async function BillingPage({
                     return (
                       <div
                         key={interval}
-                        className="rounded-2xl border-2 border-[var(--charcoal)] bg-[var(--offwhite)] p-4"
+                        className="rounded-2xl border-2 border-[var(--charcoal)] bg-white p-4 shadow-[0_3px_0_#1a1a1a]"
                       >
                         <div className="flex items-center justify-between gap-3">
                           <div>
@@ -131,7 +148,7 @@ export default async function BillingPage({
                               Add product ID env vars to enable this option.
                             </p>
                           ) : isSelected ? (
-                            <span className="inline-flex rounded-full border-2 border-[var(--charcoal)] bg-[#a6ea47] px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)]">
+                            <span className="inline-flex rounded-xl border-2 border-[var(--charcoal)] bg-[#a6ea47] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-[var(--charcoal)] shadow-[0_2px_0_#1a1a1a]">
                               Current
                             </span>
                           ) : viewer.subscription ? (
@@ -139,7 +156,7 @@ export default async function BillingPage({
                               <input type="hidden" name="planKey" value={plan.key} />
                               <input type="hidden" name="interval" value={interval} />
                               <SubmitButton
-                                className="w-full bg-white hover:-translate-y-0.5 hover:bg-[#d4e9ff] hover:shadow-[0_6px_0_#1a1a1a]"
+                                className="w-full border-2 border-[var(--charcoal)] bg-white"
                                 pendingLabel="Updating..."
                               >
                                 Switch Plan
@@ -158,7 +175,7 @@ export default async function BillingPage({
                                   interval,
                                 },
                               })}
-                              className="block rounded-xl border-2 border-[var(--charcoal)] bg-[#a6ea47] px-4 py-2.5 text-center font-heading text-sm font-bold text-[var(--charcoal)] shadow-[0_4px_0_#1a1a1a]"
+                              className="block rounded-xl border-2 border-[var(--charcoal)] bg-[#a6ea47] px-4 py-2.5 text-center font-heading text-sm font-bold text-[var(--charcoal)] shadow-[0_4px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_6px_0_#1a1a1a]"
                             >
                               Subscribe
                             </Link>
@@ -171,7 +188,7 @@ export default async function BillingPage({
 
                 <div className="mt-5 space-y-2">
                   {plan.features.map((feature) => (
-                    <div key={feature} className="rounded-xl border-2 border-[var(--charcoal)] bg-white px-3 py-2 text-sm font-semibold text-[var(--charcoal)]">
+                    <div key={feature} className="rounded-xl border-2 border-[var(--charcoal)] bg-white px-3 py-2 text-sm font-semibold text-[var(--charcoal)] shadow-[0_2px_0_#1a1a1a]">
                       {feature}
                     </div>
                   ))}
@@ -180,25 +197,27 @@ export default async function BillingPage({
             );
           })}
         </div>
-      </SectionCard>
+        </div>
+      </section>
 
       <div className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
-        <SectionCard title="Self-serve management" eyebrow="Portal + cancellation" accent="bg-[#d4e9ff]">
-          <div className="space-y-4">
+        <section className="rounded-[2rem] border-3 border-[var(--charcoal)] bg-[#d4e9ff] p-6 shadow-[0_6px_0_#1a1a1a] sm:p-8">
+        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)]/50">
+          Portal + cancellation
+        </p>
+        <h2 className="mt-2 font-heading text-2xl font-extrabold text-[var(--charcoal)]">Self-serve management</h2>
+        <div className="mt-5 space-y-4">
             <p className="text-sm font-semibold leading-relaxed text-[var(--charcoal)]/68">
-              The starter includes an in-app billing entry point and a Creem customer portal fallback for payment methods, invoices, and edge-case plan management.
+              In-app billing entry point and Creem customer portal for payment methods, invoices, and plan management.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link
-                href="/portal"
-                className="rounded-xl border-3 border-[var(--charcoal)] bg-white px-4 py-2.5 font-heading text-sm font-bold text-[var(--charcoal)] shadow-[0_4px_0_#1a1a1a]"
-              >
+              <PortalButton className="inline-flex rounded-xl border-2 border-[var(--charcoal)] bg-white px-4 py-2.5 font-heading text-sm font-bold text-[var(--charcoal)] shadow-[0_4px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_6px_0_#1a1a1a] disabled:opacity-60">
                 Open Customer Portal
-              </Link>
+              </PortalButton>
               {viewer.subscription ? (
                 <form action={cancelSubscriptionAction}>
                   <SubmitButton
-                    className="bg-[#ffd7d2] hover:-translate-y-0.5 hover:shadow-[0_6px_0_#1a1a1a]"
+                    className="rounded-xl border-2 border-[var(--charcoal)] bg-[#ffd7d2]"
                     pendingLabel="Scheduling..."
                   >
                     Cancel At Period End
@@ -207,14 +226,19 @@ export default async function BillingPage({
               ) : null}
             </div>
           </div>
-        </SectionCard>
+        </section>
 
-        <SectionCard title="Credit top-up packs" eyebrow="Optional billing strategy">
-          <div className="grid gap-4 md:grid-cols-3">
-            {creditPacks.map((pack) => (
+        <section className="rounded-[2rem] border-3 border-[var(--charcoal)] bg-[#fef3c7] p-6 shadow-[0_6px_0_#1a1a1a] sm:p-8">
+        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)]/50">
+          Top-up packs
+        </p>
+        <h2 className="mt-2 font-heading text-2xl font-extrabold text-[var(--charcoal)]">Credit top-up packs</h2>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {creditPacks.map((pack, index) => (
               <article
                 key={pack.key}
-                className="rounded-[1.5rem] border-3 border-[var(--charcoal)] bg-[#fef3c7] p-4 shadow-[0_5px_0_#1a1a1a]"
+                className="rounded-[1.4rem] border-3 border-[var(--charcoal)] bg-white p-4 shadow-[0_4px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_6px_0_#1a1a1a]"
+                style={{ transform: `rotate(${index % 2 === 0 ? "-1deg" : "1deg"})` }}
               >
                 <p className="font-heading text-xl font-extrabold text-[var(--charcoal)]">{pack.name}</p>
                 <p className="mt-1 text-sm font-semibold text-[var(--charcoal)]/65">{pack.description}</p>
@@ -237,7 +261,7 @@ export default async function BillingPage({
                         packKey: pack.key,
                       },
                     })}
-                    className="mt-4 block rounded-xl border-2 border-[var(--charcoal)] bg-white px-4 py-2.5 text-center font-heading text-sm font-bold text-[var(--charcoal)] shadow-[0_4px_0_#1a1a1a]"
+                    className="mt-4 block rounded-xl border-2 border-[var(--charcoal)] bg-white px-4 py-2.5 text-center font-heading text-sm font-bold text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_5px_0_#1a1a1a]"
                   >
                     Buy Top-up
                   </Link>
@@ -249,7 +273,7 @@ export default async function BillingPage({
               </article>
             ))}
           </div>
-        </SectionCard>
+        </section>
       </div>
     </div>
   );

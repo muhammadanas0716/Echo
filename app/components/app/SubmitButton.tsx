@@ -19,7 +19,7 @@ export default function SubmitButton({
     <button
       type="submit"
       disabled={pending}
-      className={`rounded-2xl border-3 border-[var(--charcoal)] px-4 py-3 font-heading text-sm font-bold text-[var(--charcoal)] shadow-[0_4px_0_#1a1a1a] transition disabled:cursor-not-allowed disabled:opacity-60 ${className}`}
+      className={`rounded-xl border-2 border-[var(--charcoal)] px-4 py-2.5 font-heading text-sm font-bold text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_5px_0_#1a1a1a] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-[0_3px_0_#1a1a1a] ${className}`}
     >
       {pending ? pendingLabel : children}
     </button>

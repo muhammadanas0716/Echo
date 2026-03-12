@@ -1,7 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
+import { FiArrowRight, FiMail, FiLock, FiUser } from "react-icons/fi";
 import SubmitButton from "@/app/components/app/SubmitButton";
 import FormField from "@/app/components/ui/FormField";
 import ErrorMessage from "@/app/components/ui/ErrorMessage";
+import PasswordInput from "@/app/components/ui/PasswordInput";
 import { googleAuthAction, signupAction } from "@/app/(auth)/actions";
 import { publicLinks } from "@/lib/site-links";
 
@@ -15,24 +18,20 @@ export default async function SignupPage({
   const next = typeof params.next === "string" ? params.next : "/dashboard";
 
   return (
-    <div className="rounded-[2rem] border-3 border-[var(--charcoal)] bg-white p-8 shadow-[0_10px_0_#1a1a1a] sm:p-10">
-      <div className="flex flex-wrap items-center gap-3">
-        <div className="rounded-full border-2 border-[var(--charcoal)] bg-[#d4f8e8] px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a]">
-          New workspace
-        </div>
-        <Link
-          href={publicLinks.pricing}
-          className="rounded-full border-2 border-[var(--charcoal)] bg-[#fff7cf] px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a] transition hover:-translate-y-0.5"
-        >
-          Compare plans
-        </Link>
+    <div className="rounded-[2rem] border-2 border-[var(--charcoal)] bg-white p-8 shadow-[0_12px_0_#1a1a1a] sm:p-10">
+      <div className="mb-6 flex items-center gap-2 rounded-xl border-2 border-[var(--charcoal)] bg-[#d4e9ff] px-4 py-2 w-fit">
+        <Image src="/logo.png" alt="" width={24} height={24} className="h-6 w-6 object-cover" />
+        <span className="font-heading text-sm font-extrabold text-[var(--charcoal)]">Echo</span>
       </div>
-      <h2 className="mt-4 font-heading text-3xl font-extrabold text-[var(--charcoal)] sm:text-[2.35rem]">
-        Create your Echo account.
-      </h2>
-      <p className="mt-2 max-w-lg text-sm font-semibold leading-relaxed text-[var(--charcoal)]/60">
-        Start with auth, then move straight into protected billing routes, subscriptions, customer
-        portal access, and credits.
+
+      <span className="inline-flex rounded-xl border-2 border-[var(--charcoal)] bg-[#a6ea47] px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a]">
+        Get started
+      </span>
+      <h1 className="mt-5 font-heading text-3xl font-extrabold text-[var(--charcoal)] sm:text-4xl">
+        Create your Echo account
+      </h1>
+      <p className="mt-2 text-sm font-medium text-[var(--charcoal)]/60">
+        Start with auth, then move straight into billing and credits.
       </p>
 
       <div className="mt-5">
@@ -42,7 +41,7 @@ export default async function SignupPage({
       <form action={googleAuthAction} className="mt-6">
         <input type="hidden" name="next" value={next} />
         <SubmitButton
-          className="w-full bg-[#d4e9ff] hover:-translate-y-0.5 hover:bg-[#c9e0ff] hover:shadow-[0_6px_0_#1a1a1a]"
+          className="w-full rounded-xl border-2 border-[var(--charcoal)] bg-[#d4e9ff] shadow-[0_4px_0_#1a1a1a] hover:-translate-y-0.5 hover:shadow-[0_6px_0_#1a1a1a]"
           pendingLabel="Redirecting..."
         >
           Continue with Google
@@ -57,66 +56,58 @@ export default async function SignupPage({
         <div className="h-px flex-1 bg-[var(--charcoal)]/15" />
       </div>
 
-      <form action={signupAction} className="space-y-4">
+      <form action={signupAction} className="space-y-5">
         <input type="hidden" name="next" value={next} />
-        <FormField label="Full Name" required>
-          <input
-            type="text"
-            name="fullName"
-            required
-            className="w-full rounded-[1.2rem] border-3 border-[var(--charcoal)] bg-white px-4 py-3.5 font-semibold text-[var(--charcoal)] shadow-[0_4px_0_#1a1a1a] outline-none transition focus:-translate-y-0.5 focus:shadow-[0_6px_0_#1a1a1a]"
-          />
+        <FormField label="Full name" required>
+          <div className="relative">
+            <FiUser className="absolute left-4 top-1/2 z-10 h-4 w-4 -translate-y-1/2 text-[var(--charcoal)]/40" />
+            <input
+              type="text"
+              name="fullName"
+              required
+              placeholder="Jane Doe"
+              className="w-full rounded-xl border-2 border-[var(--charcoal)]/20 bg-white py-3.5 pl-12 pr-4 font-medium text-[var(--charcoal)] outline-none transition placeholder:text-[var(--charcoal)]/40 focus:border-[var(--charcoal)] focus:ring-2 focus:ring-[var(--charcoal)]/10"
+            />
+          </div>
         </FormField>
         <FormField label="Email" required>
-          <input
-            type="email"
-            name="email"
-            required
-            className="w-full rounded-[1.2rem] border-3 border-[var(--charcoal)] bg-white px-4 py-3.5 font-semibold text-[var(--charcoal)] shadow-[0_4px_0_#1a1a1a] outline-none transition focus:-translate-y-0.5 focus:shadow-[0_6px_0_#1a1a1a]"
-          />
+          <div className="relative">
+            <FiMail className="absolute left-4 top-1/2 z-10 h-4 w-4 -translate-y-1/2 text-[var(--charcoal)]/40" />
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="you@example.com"
+              className="w-full rounded-xl border-2 border-[var(--charcoal)]/20 bg-white py-3.5 pl-12 pr-4 font-medium text-[var(--charcoal)] outline-none transition placeholder:text-[var(--charcoal)]/40 focus:border-[var(--charcoal)] focus:ring-2 focus:ring-[var(--charcoal)]/10"
+            />
+          </div>
         </FormField>
         <FormField label="Password" required hint="Use at least 8 characters.">
-          <input
-            type="password"
-            name="password"
-            minLength={8}
-            required
-            className="w-full rounded-[1.2rem] border-3 border-[var(--charcoal)] bg-white px-4 py-3.5 font-semibold text-[var(--charcoal)] shadow-[0_4px_0_#1a1a1a] outline-none transition focus:-translate-y-0.5 focus:shadow-[0_6px_0_#1a1a1a]"
-          />
+          <div className="relative">
+            <FiLock className="absolute left-4 top-1/2 z-10 h-4 w-4 -translate-y-1/2 text-[var(--charcoal)]/40" />
+            <PasswordInput name="password" required minLength={8} placeholder="••••••••" />
+          </div>
         </FormField>
         <SubmitButton
-          className="w-full bg-[#a6ea47] hover:-translate-y-0.5 hover:bg-[var(--mint)] hover:shadow-[0_6px_0_#1a1a1a]"
+          className="w-full rounded-xl border-2 border-[var(--charcoal)] bg-[#a6ea47] px-5 py-3.5 font-heading text-base font-bold shadow-[0_5px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_7px_0_#1a1a1a]"
           pendingLabel="Creating account..."
         >
-          Create Account
+          <span className="flex items-center justify-center gap-2">
+            Create Account
+            <FiArrowRight className="h-4 w-4" />
+          </span>
         </SubmitButton>
       </form>
 
-      <div className="mt-6 text-sm font-semibold text-[var(--charcoal)]/65">
+      <p className="mt-6 text-center text-sm font-medium text-[var(--charcoal)]/70">
         Already have an account?{" "}
-        <Link href={`/login?next=${encodeURIComponent(next)}`} className="underline decoration-2 underline-offset-4">
+        <Link
+          href={`/login?next=${encodeURIComponent(next)}`}
+          className="font-bold underline decoration-2 underline-offset-4 text-[var(--charcoal)] hover:no-underline"
+        >
           Log in
         </Link>
-      </div>
-
-      <div className="mt-6 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-[1.5rem] border-3 border-[var(--charcoal)] bg-[#d4e9ff] px-4 py-4 shadow-[0_4px_0_#1a1a1a]">
-          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)]/50">
-            What unlocks next
-          </p>
-          <p className="mt-2 text-sm font-bold text-[var(--charcoal)]">
-            Billing, credits, and account pages all open from the same authenticated shell.
-          </p>
-        </div>
-        <div className="rounded-[1.5rem] border-3 border-[var(--charcoal)] bg-[#fff7cf] px-4 py-4 shadow-[0_4px_0_#1a1a1a]">
-          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)]/50">
-            Billing-ready
-          </p>
-          <p className="mt-2 text-sm font-bold text-[var(--charcoal)]">
-            After signup we can send you directly to billing for live Creem plan selection.
-          </p>
-        </div>
-      </div>
+      </p>
     </div>
   );
 }

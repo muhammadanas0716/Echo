@@ -23,7 +23,7 @@ export default async function CreditsPage({
 
   return (
     <div className="space-y-6">
-      <div className="rounded-[2rem] border-3 border-[var(--charcoal)] bg-white p-6 shadow-[0_8px_0_#1a1a1a] sm:p-8">
+      <div className="rounded-[2rem] border-3 border-[var(--charcoal)] bg-[#d4f8e8] p-6 shadow-[0_8px_0_#1a1a1a] sm:p-8">
         <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)]/50">
           Credits
         </p>
@@ -36,12 +36,12 @@ export default async function CreditsPage({
       </div>
 
       {message ? (
-        <div className="rounded-2xl border-2 border-[var(--charcoal)] bg-[#d4f8e8] px-4 py-3 text-sm font-semibold text-[var(--charcoal)]">
+        <div className="rounded-2xl border-2 border-[var(--charcoal)] bg-[#d4f8e8] px-4 py-3 text-sm font-semibold text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a]">
           {message}
         </div>
       ) : null}
       {error ? (
-        <div className="rounded-2xl border-2 border-[var(--charcoal)] bg-[#ffd7d2] px-4 py-3 text-sm font-semibold text-[var(--charcoal)]">
+        <div className="rounded-2xl border-2 border-[var(--charcoal)] bg-[#ffd7d2] px-4 py-3 text-sm font-semibold text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a]">
           {error}
         </div>
       ) : null}
@@ -74,7 +74,7 @@ export default async function CreditsPage({
           </p>
           <form action={runSampleCreditAction} className="mt-5">
             <SubmitButton
-              className="bg-[#a6ea47] hover:-translate-y-0.5 hover:bg-[var(--mint)] hover:shadow-[0_6px_0_#1a1a1a]"
+              className="bg-[#a6ea47]"
               pendingLabel="Running..."
             >
               {starterConfig.dashboard.sampleActionLabel}
@@ -99,7 +99,7 @@ export default async function CreditsPage({
                       })
                     : "/billing"
                 }
-                className="flex items-center justify-between gap-3 rounded-2xl border-3 border-[var(--charcoal)] bg-white px-4 py-3 shadow-[0_4px_0_#1a1a1a]"
+                className="flex items-center justify-between gap-3 rounded-2xl border-2 border-[var(--charcoal)] bg-white px-4 py-3 shadow-[0_3px_0_#1a1a1a] transition hover:-translate-y-0.5"
               >
                 <div>
                   <p className="font-heading text-lg font-extrabold text-[var(--charcoal)]">{pack.name}</p>
@@ -116,7 +116,7 @@ export default async function CreditsPage({
             {ledger.map((entry) => (
               <div
                 key={entry.id}
-                className="flex items-center justify-between gap-3 rounded-2xl border-2 border-[var(--charcoal)] bg-[var(--offwhite)] px-4 py-3"
+                className="flex items-center justify-between gap-3 rounded-2xl border-2 border-[var(--charcoal)] bg-white px-4 py-3 shadow-[0_3px_0_#1a1a1a]"
               >
                 <div>
                   <p className="text-sm font-bold text-[var(--charcoal)]">{titleCase(entry.kind)}</p>

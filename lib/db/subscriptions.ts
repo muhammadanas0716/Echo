@@ -8,10 +8,10 @@ export type SubscriptionSyncInput = {
   customerId: string;
   productId: string;
   status: string;
-  canceledAt?: Date | null;
-  createdAt: Date;
-  currentPeriodStartDate?: Date | null;
-  currentPeriodEndDate?: Date | null;
+  canceledAt?: Date | string | null;
+  createdAt: Date | string;
+  currentPeriodStartDate?: Date | string | null;
+  currentPeriodEndDate?: Date | string | null;
   lastTransactionId?: string | null;
   metadata?: Json;
 };
@@ -23,8 +23,11 @@ export function hasActiveEntitlement(status?: string | null) {
   return ENTITLED_STATUSES.has(status);
 }
 
-function toIso(date: Date | null | undefined) {
-  return date ? date.toISOString() : null;
+function toIso(date: Date | string | number | null | undefined): string | null {
+  if (date == null) return null;
+  if (typeof date === "string") return date;
+  if (typeof date === "number") return new Date(date).toISOString();
+  return date instanceof Date ? date.toISOString() : null;
 }
 
 export async function getCurrentSubscription(userId: string): Promise<AppSubscription | null> {

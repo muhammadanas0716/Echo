@@ -19,7 +19,7 @@ export default async function AccountPage({
 
   return (
     <div className="space-y-6">
-      <div className="rounded-[2rem] border-3 border-[var(--charcoal)] bg-white p-6 shadow-[0_8px_0_#1a1a1a] sm:p-8">
+      <div className="rounded-[2rem] border-3 border-[var(--charcoal)] bg-[#ffd7d2] p-6 shadow-[0_8px_0_#1a1a1a] sm:p-8">
         <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--charcoal)]/50">
           Account
         </p>
@@ -29,12 +29,12 @@ export default async function AccountPage({
       </div>
 
       {message ? (
-        <div className="rounded-2xl border-2 border-[var(--charcoal)] bg-[#d4f8e8] px-4 py-3 text-sm font-semibold text-[var(--charcoal)]">
+        <div className="rounded-2xl border-2 border-[var(--charcoal)] bg-[#d4f8e8] px-4 py-3 text-sm font-semibold text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a]">
           {message}
         </div>
       ) : null}
       {error ? (
-        <div className="rounded-2xl border-2 border-[var(--charcoal)] bg-[#ffd7d2] px-4 py-3 text-sm font-semibold text-[var(--charcoal)]">
+        <div className="rounded-2xl border-2 border-[var(--charcoal)] bg-[#ffd7d2] px-4 py-3 text-sm font-semibold text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a]">
           {error}
         </div>
       ) : null}
@@ -47,7 +47,7 @@ export default async function AccountPage({
                 type="email"
                 value={viewer.profile.email}
                 disabled
-                className="w-full rounded-2xl border-2 border-[var(--charcoal)] bg-[#f2f2f2] px-4 py-3 font-semibold text-[var(--charcoal)]/55 outline-none"
+                className="w-full rounded-xl border-2 border-[var(--charcoal)] bg-[#f2f2f2] px-4 py-3 font-semibold text-[var(--charcoal)]/55 outline-none"
               />
             </FormField>
             <FormField label="Full Name">
@@ -55,11 +55,11 @@ export default async function AccountPage({
                 type="text"
                 name="fullName"
                 defaultValue={viewer.profile.full_name ?? ""}
-                className="w-full rounded-2xl border-2 border-[var(--charcoal)] bg-[var(--offwhite)] px-4 py-3 font-semibold text-[var(--charcoal)] outline-none"
+                className="w-full rounded-xl border-2 border-[var(--charcoal)] bg-white px-4 py-3 font-semibold text-[var(--charcoal)] outline-none"
               />
             </FormField>
             <SubmitButton
-              className="bg-[#a6ea47] hover:-translate-y-0.5 hover:bg-[var(--mint)] hover:shadow-[0_6px_0_#1a1a1a]"
+              className="bg-[#a6ea47]"
               pendingLabel="Saving..."
             >
               Save Profile
@@ -69,15 +69,15 @@ export default async function AccountPage({
 
         <SectionCard title="Account status" eyebrow="Read-only" accent="bg-[#d4e9ff]">
           <div className="space-y-4">
-            <div className="flex items-center justify-between gap-3 rounded-2xl border-2 border-[var(--charcoal)] bg-white px-4 py-3">
+            <div className="flex items-center justify-between gap-3 rounded-2xl border-2 border-[var(--charcoal)] bg-white px-4 py-3 shadow-[0_3px_0_#1a1a1a]">
               <span className="text-sm font-bold text-[var(--charcoal)]">Role</span>
               <span className="text-sm font-black text-[var(--charcoal)]">{viewer.profile.role}</span>
             </div>
-            <div className="flex items-center justify-between gap-3 rounded-2xl border-2 border-[var(--charcoal)] bg-white px-4 py-3">
+            <div className="flex items-center justify-between gap-3 rounded-2xl border-2 border-[var(--charcoal)] bg-white px-4 py-3 shadow-[0_3px_0_#1a1a1a]">
               <span className="text-sm font-bold text-[var(--charcoal)]">Subscription</span>
               <StatusBadge status={viewer.subscription?.status ?? "inactive"} />
             </div>
-            <div className="flex items-center justify-between gap-3 rounded-2xl border-2 border-[var(--charcoal)] bg-white px-4 py-3">
+            <div className="flex items-center justify-between gap-3 rounded-2xl border-2 border-[var(--charcoal)] bg-white px-4 py-3 shadow-[0_3px_0_#1a1a1a]">
               <span className="text-sm font-bold text-[var(--charcoal)]">Billing period end</span>
               <span className="text-sm font-black text-[var(--charcoal)]">
                 {formatDate(viewer.subscription?.current_period_end)}
@@ -85,7 +85,7 @@ export default async function AccountPage({
             </div>
             <Link
               href="/reset-password"
-              className="inline-flex rounded-xl border-3 border-[var(--charcoal)] bg-[#fef3c7] px-4 py-2.5 font-heading text-sm font-bold text-[var(--charcoal)] shadow-[0_4px_0_#1a1a1a]"
+              className="inline-flex rounded-xl border-2 border-[var(--charcoal)] bg-[#fef3c7] px-4 py-2.5 font-heading text-sm font-bold text-[var(--charcoal)] shadow-[0_3px_0_#1a1a1a] transition hover:-translate-y-0.5 hover:shadow-[0_5px_0_#1a1a1a]"
             >
               Reset Password
             </Link>

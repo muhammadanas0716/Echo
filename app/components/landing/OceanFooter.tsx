@@ -120,7 +120,7 @@ export default function OceanFooter() {
               <div className="flex flex-wrap gap-2">
                 {[
                   { label: "Pricing", href: publicLinks.pricing },
-                  { label: "Note on the demo", href: publicLinks.demoNote },
+                  { label: "Docs", href: publicLinks.demoNote },
                   { label: "Start free", href: publicLinks.getStarted },
                   { label: "Log in", href: publicLinks.login },
                 ].map((link) => (
